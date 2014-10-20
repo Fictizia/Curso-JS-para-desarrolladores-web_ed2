@@ -52,6 +52,13 @@ Backbone.js
 * Routers
 * Sync API
 
+Tools
+=================
+* Git & github
+* Cloud 9
+* Divshot
+* Firebase
+
 Links
 =================
 * [Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
