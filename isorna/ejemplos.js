@@ -1,3 +1,5 @@
+'use strict';
+
 var ghTablaHash = {
     clave1: 'valor1'
 };
