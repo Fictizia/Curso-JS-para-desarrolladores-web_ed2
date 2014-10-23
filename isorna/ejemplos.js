@@ -13,6 +13,12 @@ var calcularIRPF = function () {
 };
 
 function calcularIVA (piTipo, pcNombre) {
+    var i = 0, aArray = [1, 2, 3];
+    
+    (function funcionInterna(){
+        console.log(aArray);
+    })();
+    
     console.log(arguments);
 };
 

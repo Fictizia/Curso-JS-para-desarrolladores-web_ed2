@@ -25,9 +25,9 @@ doWork(function callback() {
  * Load `memory-management.js` in `about:blank` page's console, then go to Timeline > Memory and see differences when the variable is nullified or not. Whenever an object is referenced inside a closure, it's never GC'ed until nullified (in V8).
  * If there's a reference between a DOM element and an event, there'll be a leak until that reference is removed.
  * More info: 
+  * [Writting fast memory efficient javascript](http://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/).
   * [An Interesting Kind of Javascript Memory Leak](https://www.meteor.com/blog/2013/08/13/an-interesting-kind-of-javascript-memory-leak).
   * [Grooking V8 Closures for fun](http://mrale.ph/blog/2012/09/23/grokking-v8-closures-for-fun.html).
-  * [Writting fast memory efficient javascript](http://www.smashingmagazine.com/2012/11/05/writing-fast-memory-efficient-javascript/).
   * [A surprising JavaScript memory leak found at Meteor](http://point.davidglasser.net/2013/06/27/surprising-javascript-memory-leak.html).
   * [Finding memory Leaks in Gmail](https://docs.google.com/presentation/d/1wUVmf78gG-ra5aOxvTfYdiLkdGaR9OhXRnOlIcEmu2s/pub?start=false&loop=false&delayms=3000#slide=id.g1d65bdf6_0_0).
 
