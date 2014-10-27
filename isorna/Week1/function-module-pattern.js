@@ -37,3 +37,18 @@ Klass3 = function () {
       bar: BarFunction
   }
 }
+
+// Class conscructor
+(function(){
+    var exports = {};
+
+    function privateUtil() {
+            ...
+    }
+
+    exports.publicUtil = function() {
+            ...
+    };
+
+    return exports;
+})();

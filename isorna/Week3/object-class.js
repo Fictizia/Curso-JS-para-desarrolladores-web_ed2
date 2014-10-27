@@ -1,3 +1,5 @@
+// Objects explanation
+
 // Shape - superclass
 function Shape() {
   this.x = 0;
