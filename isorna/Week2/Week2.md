@@ -20,9 +20,17 @@ __Mixins & inheritance__
 
 __Events__
 
+* [Event](https://developer.mozilla.org/en-US/docs/Web/API/Event) interface, properties and methods.
+* __This__ differences when assigning an [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget.addEventListener).
+* Remove event listener for memory conservation.
+
 __HTTP Requests__
 
+* Take a look at `http-request.js` for code explanation.
+
 __JSON & JSONP__
+
+* [JSON with padding](http://web.ontuts.com/tutoriales/jsonp-llamadas-ajax-entre-dominios/).
 
 __Error handling__
 
@@ -37,7 +45,7 @@ __Code optimization__
 __Backbone.js & underscore.js__
 
 * Backbone app structure.
- * Models.
+ * [Models](http://backbonetutorials.com/what-is-a-model/).
  * Collections.
  * Templates.
  * Views.
