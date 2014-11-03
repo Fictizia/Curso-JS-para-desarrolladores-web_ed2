@@ -4,6 +4,7 @@ Week 3 Milestone
 __JSON & JSONP__
 
 * [JSON with padding](http://web.ontuts.com/tutoriales/jsonp-llamadas-ajax-entre-dominios/).
+* [CORS](http://www.html5rocks.com/en/tutorials/cors/).
 
 __Error handling__
 
@@ -21,11 +22,8 @@ __Object-oriented Programming__
  * [Create an object oriented javascript class constructor](http://www.htmlgoodies.com/html5/tutorials/create-an-object-oriented-javascript-class-constructor.html).
  * [__ECMA 6__ Object prototype constructor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/create).
 
-__Prototypes (revisited)__
-
-
-__Constructors__
-
+__Prototypes & Constructors (revisited)__
+* See `object-inheritance.js` for code explanation.
 
 __Object hasOwnProperty & propertyIsEnumerable__
 

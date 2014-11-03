@@ -1,4 +1,4 @@
-
+// HTTP Request
 
 var xmlHttp = new XMLHttpRequest(),
     cURL = 'https://openbus.emtmadrid.es:9443/emt-proxy-server/last/bus/GetRouteLines.php',
