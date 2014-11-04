@@ -9,7 +9,7 @@ __JSON & JSONP__
 __Error handling__
 
 * Take a look at `error-handling.js` for code explanation.
-* Don't use `try / catch` statements, due to memory.
+* Don't use [`try / catch` statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch), due to memory.
 * Talk about preventive error handling with function patterns.
 
 __Object-oriented Programming__
@@ -39,4 +39,5 @@ __Practice__
  * [Setup callback url for your facebook app](https://www.firebase.com/docs/web/guide/login/facebook.html).
  * [Follow firebase login guidelines](https://www.firebase.com/docs/web/guide/user-auth.html).
  * [Set up firebase security rules](https://www.firebase.com/docs/security/guide/user-security.html).
+ * Use firebase logged user data to show it's portrait when he's logged in.
 * Use [Open Data EMT](http://opendata.emtmadrid.es/Servicios-web/BUS) for reading bus lines' information.

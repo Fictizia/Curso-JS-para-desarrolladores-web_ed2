@@ -17,6 +17,7 @@ __Mixins & inheritance__
 
 * Mixins give all the benefits of multiple inheritance, without hierarchy (prototypal inheritance in JavaScript). They both allow you to reuse an interface (or set of functions) on multiple objects.
 * Take a look at `mixins.js` for code explanation.
+* [ADD LINK](LINK FOR MIXINS)
 
 __Events__
 
