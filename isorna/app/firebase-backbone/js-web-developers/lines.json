@@ -1,0 +1,62 @@
+{
+    "madrid-emt": {
+        "routes": {
+            "1": {
+                "4514": "ISAAC PERAL- PLAZA CRISTO REY",
+                "4022": "ISAAC PERAL-FERNANDEZ DE LOS RIOS",
+                "3687": "ARCIPRESTE DE HITA-FERNANDO EL CATOLICO",
+                "737": "PRINCESA-ALTAMIRANO",
+                "735": "PRINCESA-ALBERTO AGUILERA",
+                "173": "PRINCESA-VENTURA RODRIGUEZ",
+                "171": "GRAN VIA- PLAZA ESPAÑA",
+                "169": "GRAN VIA-SAN BERNARDO",
+                "167": "GRAN VIA-SALUD",
+                "5138": "GRAN VIA-CLAVEL",
+                "164": "GRAN VIA-ALCALA",
+                "70": "PLAZA DE CIBELES",
+                "162": "PUERTA DE ALCALA",
+                "423": "VELAZQUEZ-VILLANUEVA",
+                "424": "VELAZQUEZ-GOYA",
+                "425": "VELAZQUEZ-AYALA",
+                "426": "VELAZQUEZ-J.ORTEGA Y GASSET",
+                "731": "J.ORTEGA Y GASSET- PLAZA MQUES.SALAMANCA",
+                "729": "J.ORTEGA Y GASSET-CONDE PEÑALVER",
+                "727": "J.ORTEGA Y GASSET- FRANCISCO SILVELA",
+                "726": "CARTAGENA- FRANCISCO SILVELA",
+                "2304": "CARTAGENA-ERASO",
+                "721": "CARTAGENA-MQUES.AHUMADA",
+                "717": "CARTAGENA-CLARA DEL REY",
+                "715": "CARTAGENA-LOPEZ DE HOYOS",
+                "745": "SUERO DE QUIÑONES-PECHUAN",
+                "714": "SUERO DE QUIÑONES-LOPEZ DE HOYOS"
+            }
+        },
+        "vehicles": {
+            "1-1": {
+                "heading": "4022",
+                "id": "1",
+                "stop": "4514",
+                "routeTag": "1",
+                "timestamp": 0,
+                "vtype": "bus"
+            },
+            "1-2": {
+                "heading": "423",
+                "id": "2",
+                "stop": "162",
+                "routeTag": "1",
+                "timestamp": 0,
+                "vtype": "bus"
+            },
+            "1-3": {
+                "heading": "721",
+                "id": "3",
+                "stop": "2304",
+                "routeTag": "1",
+                "timestamp": 0,
+                "vtype": "bus"
+            }
+        }
+    }
+}
+

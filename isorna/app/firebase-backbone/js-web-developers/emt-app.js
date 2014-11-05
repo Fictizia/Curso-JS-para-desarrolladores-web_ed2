@@ -1,36 +1,38 @@
+/* globals: Firebase, Backbone, $, _ */
 // EMT APP
 
 $(function document_onReady () {
-    var EMTApp = window.EMTApp = {};
+    var TransportApp = window.TransportApp = {};
     
-    EMTApp.ref = new Firebase('https://js-web-developers.firebaseio.com');
-    EMTApp.bIsNewUser = true;
+    TransportApp.cache = {};
+    TransportApp.ref = new Firebase('https://js-web-developers.firebaseio.com');
+    TransportApp.bIsNewUser = true;
     
     $('#login-button').on('click', function loginButton_onClick (event) {
-        EMTApp.ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
+        TransportApp.ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
             if (err) {
                 // see: https://www.firebase.com/docs/web/guide/user-auth.html#section-handling-errors
                 throwStack(err.message);
                 return;
             }
-            EMTApp.authData = authData;
+            TransportApp.authData = authData;
             console.log('login ok');
         });
     });
     
     $('#logout-button').on('click', function logoutButton_onClick (event) {
-        EMTApp.ref.unauth();
-        EMTApp.authData = null;
+        TransportApp.ref.unauth();
+        TransportApp.authData = null;
     });
     
-    EMTApp.ref.onAuth(function ref_onAuth (authData) {
+    TransportApp.ref.onAuth(function ref_onAuth (authData) {
       if (authData) {
         // user authenticated with Firebase
         console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
         
         // store user data
-        if (EMTApp.bIsNewUser) {
-            EMTApp.ref.child('authUsers').child(authData.uid).set(authData);
+        if (TransportApp.bIsNewUser) {
+            TransportApp.ref.child('authUsers').child(authData.uid).set(authData);
         }
         
         $('#login-button').hide();
@@ -42,6 +44,33 @@ $(function document_onReady () {
         $('#login-button').show();
         $('#logout-button').hide();
       }
+    });
+    
+    TransportApp.getVehicleLocations = function app_getVehicleLocation () {
+        var cURL_routes = '/lines.json' + '?' + Date.now();
+        
+        $.ajax({
+            dataType: 'json',
+            url: cURL_routes,
+            success: function ajax_getVehicleLocation_success (poData) {
+                TransportApp.cache.routes = poData;
+                TransportApp.saveRoutes();
+            }
+        });
+    };
+    
+    TransportApp.saveRoutes = function app_saveRoutes () {
+        TransportApp.ref.child('routes-db').set(TransportApp.cache.routes, function saveRoutes_onError (error) {
+            if (error) {
+                throwStack("Data could not be saved." + error);
+            } else {
+                console.info("Data saved successfully.");
+            }
+        });
+    };
+    
+    $('#load-data-button').on('click', function loadDataButton_onClick (event) {
+        TransportApp.getVehicleLocations();
     });
 });
 
