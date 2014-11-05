@@ -1,4 +1,4 @@
-/* globals: Firebase, Backbone, $, _ */
+/* global Firebase, Backbone, $, _ */
 // EMT APP
 
 $(function document_onReady () {
@@ -78,4 +78,23 @@ function throwStack (pcErrorMessage){
     var oError = new Error(pcErrorMessage);
     
     return oError.stack;
+}
+
+function testFB () {
+    var transitRef = new Firebase('https://publicdata-transit.firebaseio.com/sf-muni'),
+        lineIndex = transitRef.child('vehicles').limitToLast(10);
+   
+    lineIndex.on('child_changed', function lineIndex_onChildChanged (snapshot) {
+        console.log('child_changed', snapshot.val());
+    });
+    
+    lineIndex.on('child_added', function lineIndex_onChildAdded (snapshot) {
+        console.log('child_added', snapshot.val());
+    });
+    lineIndex.on('child_removed', function lineIndex_onChildRemoved (snapshot) {
+        console.log('child_removed', snapshot.val());
+    });
+    lineIndex.once('value', function lineIndex_onValue (snapshot) {
+        console.log('value', snapshot.val());
+    });
 }
