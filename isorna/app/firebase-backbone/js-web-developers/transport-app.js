@@ -58,7 +58,7 @@ $(function document_onReady () {
             }
         });*/
         var transitRef = new Firebase('https://publicdata-transit.firebaseio.com/'),
-        lineIndex = transitRef.child('sf-muni/vehicles').limit(200);
+        lineIndex = transitRef.child('sf-muni/vehicles').limitToLast(20);
    
         /*lineIndex.on('child_changed', function lineIndex_onChildChanged (snapshot) {
             console.log('child_changed', snapshot.val());
