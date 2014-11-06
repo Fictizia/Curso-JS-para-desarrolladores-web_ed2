@@ -34,13 +34,14 @@ $(function document_onReady () {
         if (TransportApp.bIsNewUser) {
             TransportApp.ref.child('authUsers').child(authData.uid).set(authData);
         }
-        
+        $('#login-form').prepend('<img id="user-avatar" src="' + authData.facebook.cachedUserProfile.picture.data.url + '" alt="' + authData.facebook.cachedUserProfile + '" />')
         $('#login-button').hide();
         $('#logout-button').show();
       } else {
         // user is logged out
         console.log('user is logged out');
         
+        $('#user-avatar').remove();
         $('#login-button').show();
         $('#logout-button').hide();
       }
