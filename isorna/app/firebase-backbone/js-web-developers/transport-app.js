@@ -47,7 +47,7 @@ $(function document_onReady () {
     });
     
     TransportApp.getVehicleLocations = function app_getVehicleLocation () {
-        var cURL_routes = '/lines.json' + '?' + Date.now();
+        /*var cURL_routes = '/lines.json' + '?' + Date.now();
         
         $.ajax({
             dataType: 'json',
@@ -56,10 +56,28 @@ $(function document_onReady () {
                 TransportApp.cache.routes = poData;
                 TransportApp.saveRoutes();
             }
+        });*/
+        var transitRef = new Firebase('https://publicdata-transit.firebaseio.com/'),
+        lineIndex = transitRef.child('sf-muni/vehicles').limit(200);
+   
+        /*lineIndex.on('child_changed', function lineIndex_onChildChanged (snapshot) {
+            console.log('child_changed', snapshot.val());
+        });*/
+        
+        lineIndex.on('child_added', function lineIndex_onChildAdded (snapshot) {
+            console.log('child_added', snapshot.val());
+        });
+        
+        lineIndex.on('child_removed', function lineIndex_onChildRemoved (snapshot) {
+            console.log('child_removed', snapshot.val());
+        });
+        
+        lineIndex.once('value', function lineIndex_onValue (snapshot) {
+            console.log('value', snapshot.val());
         });
     };
     
-    TransportApp.saveRoutes = function app_saveRoutes () {
+    /*TransportApp.saveRoutes = function app_saveRoutes () {
         TransportApp.ref.child('routes-db').set(TransportApp.cache.routes, function saveRoutes_onError (error) {
             if (error) {
                 throwStack("Data could not be saved." + error);
@@ -67,7 +85,7 @@ $(function document_onReady () {
                 console.info("Data saved successfully.");
             }
         });
-    };
+    };*/
     
     $('#load-data-button').on('click', function loadDataButton_onClick (event) {
         TransportApp.getVehicleLocations();
@@ -78,23 +96,4 @@ function throwStack (pcErrorMessage){
     var oError = new Error(pcErrorMessage);
     
     return oError.stack;
-}
-
-function testFB () {
-    var transitRef = new Firebase('https://publicdata-transit.firebaseio.com/sf-muni'),
-        lineIndex = transitRef.child('vehicles').limitToLast(10);
-   
-    lineIndex.on('child_changed', function lineIndex_onChildChanged (snapshot) {
-        console.log('child_changed', snapshot.val());
-    });
-    
-    lineIndex.on('child_added', function lineIndex_onChildAdded (snapshot) {
-        console.log('child_added', snapshot.val());
-    });
-    lineIndex.on('child_removed', function lineIndex_onChildRemoved (snapshot) {
-        console.log('child_removed', snapshot.val());
-    });
-    lineIndex.once('value', function lineIndex_onValue (snapshot) {
-        console.log('value', snapshot.val());
-    });
 }
