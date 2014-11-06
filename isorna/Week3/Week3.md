@@ -40,6 +40,10 @@ Week 3 Milestone
 
 * [In-depth explanation of mixins, __functional mixins__ and __curry__](http://javascriptweblog.wordpress.com/2011/05/31/a-fresh-look-at-javascript-mixins/).
 
+## Firebase
+
+* [Generic Firebase tutorial](http://thejackalofjavascript.com/getting-started-with-firebase/).
+
 ## Practice 1
 
 * Use facebook login for our backbone app.
