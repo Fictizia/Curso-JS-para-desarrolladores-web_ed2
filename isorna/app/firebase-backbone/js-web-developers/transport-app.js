@@ -4,27 +4,92 @@
 $(function document_onReady () {
     var TransportApp = window.TransportApp = {};
     
-    TransportApp.cache = {};
+    //TransportApp.cache = {};
     TransportApp.ref = new Firebase('https://js-web-developers.firebaseio.com');
     TransportApp.bIsNewUser = true;
     
-    $('#login-button').on('click', function loginButton_onClick (event) {
-        TransportApp.ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
-            if (err) {
-                // see: https://www.firebase.com/docs/web/guide/user-auth.html#section-handling-errors
-                throwStack(err.message);
-                return;
+    var SingleRoute = Backbone.Model.extend();
+    
+    var RoutesList = Backbone.Firebase.Collection.extend({
+        model: SingleRoute,
+        firebase: new Firebase("https://publicdata-transit.firebaseio.com/sf-muni/routes")
+    });
+    
+    var SingleRouteView = Backbone.View.extend({
+        tagName:  'li',
+        className: 'list-group-item',
+        template: _.template($('#route-item-template').html()),
+        initialize: function() {
+          this.listenTo(this.model, 'change', this.render);
+          this.listenTo(this.model, 'remove', this.remove);
+        },
+        render: function() {
+            var oModel = this.model.toJSON(), 
+                oReturnValue = {id: oModel.id},
+                aVehicles = [],
+                oValue = {};
+            
+            for (oValue in oModel) {
+                if (oModel.hasOwnProperty(oValue) && oModel[oValue] === true) {
+                    aVehicles.push(oValue);
+                }
             }
-            TransportApp.authData = authData;
-            console.log('login ok');
-        });
+            
+            oReturnValue.vehicles = aVehicles.join(', ');
+            
+            this.$el.html(this.template(oReturnValue));
+            return this;
+        }
     });
     
-    $('#logout-button').on('click', function logoutButton_onClick (event) {
-        TransportApp.ref.unauth();
-        TransportApp.authData = null;
+    // myTransportApp
+    
+    var myTransportAppView = Backbone.View.extend({
+        cache: {},
+        el: $("#myTransportApp"),
+        events: {
+          "click #login-button":  "loginButton_onClick",
+          "click #logout-button": "logoutButton_onClick"
+          //, "click #load-data-button": "loadDataButton_onClick"
+        },
+        loginButton_onClick: function (event) {
+            TransportApp.ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
+                if (err) {
+                    // see: https://www.firebase.com/docs/web/guide/user-auth.html#section-handling-errors
+                    throwStack(err.message);
+                    return;
+                }
+                TransportApp.authData = authData;
+                console.log('login ok');
+            });
+        },
+        logoutButton_onClick: function (event) {
+            TransportApp.ref.unauth();
+            TransportApp.authData = null;
+        },
+        //loadDataButton_onClick: function (event) {},
+        initialize: function() {
+            this.cache.routesList = new RoutesList();
+            this.listenTo(this.cache.routesList, 'add', this.addOne);
+            this.listenTo(this.cache.routesList, 'reset', this.addAll);
+            this.listenTo(this.cache.routesList, 'all', this.render);
+        },
+        addOne: function(route) {
+            var oView = new SingleRouteView({model: route});
+            this.$("#routes-list").append(oView.render().el);
+        },
+    
+        // Add all items in the **Todos** collection at once.
+        addAll: function() {
+            this.$("#routes-list").html("");
+            this.cache.routesList.each(this.addOne, this);
+        },
+        render: function () {
+            //console.log('rendering');
+        }
     });
     
+    // Event handlers
     TransportApp.ref.onAuth(function ref_onAuth (authData) {
       if (authData) {
         // user authenticated with Firebase
@@ -34,9 +99,10 @@ $(function document_onReady () {
         if (TransportApp.bIsNewUser) {
             TransportApp.ref.child('authUsers').child(authData.uid).set(authData);
         }
-        $('#login-form').prepend('<img id="user-avatar" src="' + authData.facebook.cachedUserProfile.picture.data.url + '" alt="' + authData.facebook.cachedUserProfile + '" />')
+        $('#login-form').prepend('<img id="user-avatar" src="' + authData.facebook.cachedUserProfile.picture.data.url + '" alt="' + authData.facebook.cachedUserProfile + '" />');
         $('#login-button').hide();
         $('#logout-button').show();
+        //$('#load-data-button').show();
       } else {
         // user is logged out
         console.log('user is logged out');
@@ -44,22 +110,13 @@ $(function document_onReady () {
         $('#user-avatar').remove();
         $('#login-button').show();
         $('#logout-button').hide();
+        //$('#load-data-button').hide();
       }
     });
     
     TransportApp.getVehicleLocations = function app_getVehicleLocation () {
-        /*var cURL_routes = '/lines.json' + '?' + Date.now();
-        
-        $.ajax({
-            dataType: 'json',
-            url: cURL_routes,
-            success: function ajax_getVehicleLocation_success (poData) {
-                TransportApp.cache.routes = poData;
-                TransportApp.saveRoutes();
-            }
-        });*/
         var transitRef = new Firebase('https://publicdata-transit.firebaseio.com/'),
-        lineIndex = transitRef.child('sf-muni/vehicles').limitToLast(200);
+            lineIndex = transitRef.child('sf-muni/vehicles').limitToLast(200);
    
         /*lineIndex.on('child_changed', function lineIndex_onChildChanged (snapshot) {
             console.log('child_changed', snapshot.val());
@@ -73,7 +130,7 @@ $(function document_onReady () {
             console.log('child_removed', snapshot.val());
         });
         
-        lineIndex.once('value', function lineIndex_onValue (snapshot) {
+        lineIndex.once('value', function lineIndex_onceValue (snapshot) {
             console.log('value', snapshot.val());
         });
     };
@@ -88,9 +145,8 @@ $(function document_onReady () {
         });
     };*/
     
-    $('#load-data-button').on('click', function loadDataButton_onClick (event) {
-        TransportApp.getVehicleLocations();
-    });
+    // App init
+    window.myApp = new myTransportAppView();
 });
 
 function throwStack (pcErrorMessage){
