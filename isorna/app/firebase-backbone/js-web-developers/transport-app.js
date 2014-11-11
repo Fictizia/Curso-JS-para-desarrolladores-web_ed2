@@ -124,7 +124,7 @@ $(function document_onReady () {
                 console.log('remove list', this.cache);
                 
                 //this.cache.viewList.each(function (oItem) {console.log(oItem)
-                    //oItem.remove();
+                      //oItem.remove();
                     //oItem.unbind();
                 //});
             }
