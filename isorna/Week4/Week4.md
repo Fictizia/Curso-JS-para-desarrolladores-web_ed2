@@ -23,15 +23,21 @@ Week 4 Milestone
 
 ## Callbacks
 
-* ...
+* Take a look at `callbacks.js` for code explanation.
+* [Be careful and prevent callback hell](http://callbackhell.com/).
 
-## Event Driven Design
+## Event Driven Design & Async
 
-* ...
+* [Event Driven Programming in JavaScript](http://www.24hr.se/event-driven-programming-in-javascript).
+* [Nunt library](http://nunt.onezerozeroone.com/).
+* __The Promise Pattern__: A promise represents the eventual value returned from the single completion of an operation.
+* Take a look at `promises.js` for code explanation.
 
 ## Node.js
 
-* ...
+* [Introduction to Node.js](http://www.nodebeginner.org/).
+* [How To Node community](http://howtonode.org/).
+* [Passport](http://passportjs.org/), authentication module for Node.js.
 
 ## Firebase
 
@@ -50,3 +56,8 @@ Week 4 Milestone
  * __Create a view for each route, showing where each vehicle is__.
  * [Saving Data](https://www.firebase.com/docs/web/guide/saving-data.html).
  * [Retrieving Data](https://www.firebase.com/docs/web/guide/retrieving-data.html).
+
+* Take a look at `backbone-quick-explanation.js` for code explanation.
+
+* Separate our code in different modules, and use require.js/common.js to import dependencies. 
+ * [CommonJS Modules](http://javascriptconesteroides.blogspot.com.es/2013/06/commonjs-modules.html).
