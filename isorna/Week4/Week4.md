@@ -57,8 +57,11 @@ Week 4 Milestone
  * __Create a view for each route, showing where each vehicle is__.
  * [Saving Data](https://www.firebase.com/docs/web/guide/saving-data.html).
  * [Retrieving Data](https://www.firebase.com/docs/web/guide/retrieving-data.html).
+ * [Security & Rules on Firebase](https://www.firebase.com/docs/security/quickstart.html).
 
 * Take a look at `backbone-quick-explanation.js` for code explanation.
 
-* Separate our code in different modules, and use require.js/common.js to import dependencies. 
+* Separate our code in different modules, and use [require.js](http://requirejs.org/)/[common.js](http://requirejs.org/docs/commonjs.html) to import dependencies. 
+ * [Using require.js with jquery from a CDN](https://github.com/requirejs/example-jquery-cdn).
  * [CommonJS Modules](http://javascriptconesteroides.blogspot.com.es/2013/06/commonjs-modules.html).
+ * [AlmondJS](https://github.com/jrburke/almond) as an AMD alternative.
