@@ -35,6 +35,7 @@ Week 4 Milestone
 
 ## Node.js
 
+* Take a look at `node.js` for code explanation.
 * [Introduction to Node.js](http://www.nodebeginner.org/).
 * [How To Node community](http://howtonode.org/).
 * [Passport](http://passportjs.org/), authentication module for Node.js.
