@@ -122,11 +122,11 @@ $(function document_onReady () {
         removeList: function () {
             if (this.cache.viewList && this.cache.viewList.length > 0) {
                 console.log('remove list', this.cache);
-                
-                //this.cache.viewList.each(function (oItem) {console.log(oItem)
-                      //oItem.remove();
-                    //oItem.unbind();
-                //});
+                this.cache.routesList.remove();
+                // this.cache.viewList.forEach(function (poItem, poIndex, poArray) {
+                //     poItem.remove();
+                //     poItem.unbind();
+                // });
             }
         }
     });
