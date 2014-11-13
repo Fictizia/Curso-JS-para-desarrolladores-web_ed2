@@ -74,6 +74,7 @@ $(function document_onReady () {
         //loadDataButton_onClick: function (event) {},
         initialize: function() {
             this.ref.onAuth(function ref_onAuth (authData) {
+                this.stopListening();
               if (authData) {
                 // user authenticated with Firebase
                 console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
@@ -122,7 +123,12 @@ $(function document_onReady () {
         removeList: function () {
             if (this.cache.viewList && this.cache.viewList.length > 0) {
                 console.log('remove list', this.cache);
-                this.cache.routesList.remove();
+                // this.stopListening(this.cache.routesList, 'add', this.addOne);
+                // this.stopListening(this.cache.routesList, 'reset', this.addAll);
+                // this.stopListening(this.cache.routesList, 'all', this.render);
+                // this.cache.routesList = null;
+                // this.cache.viewList = [];
+                // $('#routes-list').html('');
                 // this.cache.viewList.forEach(function (poItem, poIndex, poArray) {
                 //     poItem.remove();
                 //     poItem.unbind();
