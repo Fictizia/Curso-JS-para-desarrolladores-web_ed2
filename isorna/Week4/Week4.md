@@ -40,10 +40,6 @@ Week 4 Milestone
 * [How To Node community](http://howtonode.org/).
 * [Passport](http://passportjs.org/), authentication module for Node.js.
 
-## Firebase
-
-* Review your app [User Based Security](https://www.firebase.com/docs/security/guide/user-security.html) so that each user can only read it's data.
-
 ## Bootstrap
 
 * [Twitter Bootstrap](http://www.getbootstrap.com/).

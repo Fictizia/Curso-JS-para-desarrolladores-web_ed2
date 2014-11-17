@@ -8,6 +8,15 @@ $(function document_onReady () {
     //TransportApp.ref = new Firebase('https://js-web-developers.firebaseio.com');
     //TransportApp.bIsNewUser = true;
     
+    Backbone.View.prototype.close = function() {
+        this.remove();
+        this.unbind();
+        
+        if (this.onClose) {
+            this.onClose();
+        }
+    };
+    
     var SingleRoute = Backbone.Model.extend();
     
     var RoutesList = Backbone.Firebase.Collection.extend({
@@ -39,6 +48,10 @@ $(function document_onReady () {
             
             this.$el.html(this.template(oReturnValue));
             return this;
+        },
+        onClose: function () {
+            this.stopListening(this.model, 'change', this.render);
+            this.stopListening(this.model, 'remove', this.remove);
         }
     });
     
@@ -121,18 +134,12 @@ $(function document_onReady () {
             //console.log('rendering');
         },
         removeList: function () {
+            var i = 0, j = 0;
             if (this.cache.viewList && this.cache.viewList.length > 0) {
                 console.log('remove list', this.cache);
-                // this.stopListening(this.cache.routesList, 'add', this.addOne);
-                // this.stopListening(this.cache.routesList, 'reset', this.addAll);
-                // this.stopListening(this.cache.routesList, 'all', this.render);
-                // this.cache.routesList = null;
-                // this.cache.viewList = [];
-                // $('#routes-list').html('');
-                // this.cache.viewList.forEach(function (poItem, poIndex, poArray) {
-                //     poItem.remove();
-                //     poItem.unbind();
-                // });
+                this.cache.viewList.forEach(function (poItem, poIndex, poArray) {
+                    poItem.close();
+                });
             }
         }
     });
