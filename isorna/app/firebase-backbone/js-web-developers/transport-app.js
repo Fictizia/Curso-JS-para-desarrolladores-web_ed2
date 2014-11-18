@@ -2,7 +2,8 @@
 // EMT APP
 
 $(function document_onReady () {
-    var TransportApp = window.TransportApp = {};
+    var TransportApp = window.TransportApp = {},
+        cRef_URL = 'https://js-web-developers.firebaseio.com';
     
     //TransportApp.cache = {};
     //TransportApp.ref = new Firebase('https://js-web-developers.firebaseio.com');
@@ -62,7 +63,8 @@ $(function document_onReady () {
             viewList: []
         },
         el: $("#myTransportApp"),
-        ref: new Firebase('https://js-web-developers.firebaseio.com'),
+        ref_URL: cRef_URL,
+        ref: new Firebase(cRef_URL),
         bIsNewUser: true,
         events: {
           "click #login-button":  "loginButton_onClick",
@@ -70,6 +72,7 @@ $(function document_onReady () {
           //, "click #load-data-button": "loadDataButton_onClick"
         },
         loginButton_onClick: function (event) {
+            Firebase.goOnline();
             this.ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
                 if (err) {
                     // see: https://www.firebase.com/docs/web/guide/user-auth.html#section-handling-errors
@@ -134,12 +137,19 @@ $(function document_onReady () {
             //console.log('rendering');
         },
         removeList: function () {
-            var i = 0, j = 0;
             if (this.cache.viewList && this.cache.viewList.length > 0) {
-                console.log('remove list', this.cache);
+                console.log('remove list');
+                
+                this.stopListening(this.cache.routesList, 'add', this.addOne);
+                this.stopListening(this.cache.routesList, 'reset', this.addAll);
+                this.stopListening(this.cache.routesList, 'all', this.render);
+                
                 this.cache.viewList.forEach(function (poItem, poIndex, poArray) {
                     poItem.close();
                 });
+                
+                Firebase.goOffline();
+                //this.ref = new Firebase(this.ref_URL);
             }
         }
     });
