@@ -48,7 +48,7 @@ Week 5 Milestone
 
 ## AngularJS introduction
 
-* _Thursday class_.
+* _Thursday class_[example app](fictizia-angularjs.firebaseapp.com).
 
 ## Firebase
 
