@@ -5,7 +5,7 @@ function Vehicle(type){
 
 function Bus(heading, route, lat, long, timestamp ) {
   //Herencia en ECMA6
-  Vehicle.call(this,'Bus');
+  Vehicle.call(this,'Bus');//si pasase un array usaria apply
   
   this.id = new Date().valueOf();
   this.heading = heading;
@@ -62,20 +62,24 @@ var mySingleton = (function (Firebase) {
       
     var ref = new Firebase('https://fictizia.firebaseio.com/');
     var vauthData = {};
+    
+    function saveUSerData(err, authData){
+        //lanzar error si no hay conexión
+        if (err) {
+            throwStack(err.message);
+            return;
+        }
+        
+        //Guardar authData de la conexión en un atributo de authData
+        vauthData = authData;
+        console.log('login ok');
+    }
  
     // Singleton
     function logingFacebook(){
         //abrir popup de login un botón para cada api
         ref.authWithOAuthPopup('facebook', function ref_authWithOAuthPopup(err, authData) {
-            //lanzar error si no hay conexión
-            if (err) {
-                throwStack(err.message);
-                return;
-            }
-            
-            //Guardar authData de la conexión en un atributo de authData
-            vauthData = authData;
-            console.log('login ok');
+            saveUSerData(err, authData);
         });    
     };
     
@@ -83,14 +87,9 @@ var mySingleton = (function (Firebase) {
         mySingleton.ref.authWithPassword({
           email    : user,
           password : pass
-        }, function(error, authData) {
-          if (error === null) {
-            // user authenticated with Firebase
-            console.log("User ID: " + authData.uid + ", Provider: " + authData.provider);
-          } else {
-            console.log("Error authenticating user:", error);
-          }
-        });
+        }, function ref_authWithOAuthLogin(err, authData) {
+            saveUSerData(err, authData);
+        });    
     };
     
     //Función para lanzar errores

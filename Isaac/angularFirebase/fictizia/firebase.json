@@ -1,6 +1,6 @@
 {
   "firebase": "fictizia",
-  "public": ".",
+  "public": "app",
   "ignore": [
     "firebase.json",
     "**/.*",
