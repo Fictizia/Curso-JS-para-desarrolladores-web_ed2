@@ -1,46 +1,45 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Transport app</title>
+  <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Transport App</title>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="todos.css"/>
 </head>
+
 <body>
-  <div id="myTransportApp">
-
-    <header>
-      <h1>Transport App</h1>
-      <div id="foto">
-        <img src=""></img>
-      </div>
-      <div id="login-form">
-        <button id="login-button">Login with Facebook</button>
-        <button id="logout-button">Logout</button>
-      </div>
-    </header>
-
-    <section id="main">
-      <button id="load-data-button">Load Data</button>
-    </section>
-
-    <footer>
-      
-    </footer>
-
-  </div>
+  <section class="container-fluid" id="myTransportApp">
+		<section class="row">
+		  <section class="main">
+        <h1>Transport App</h1>
+		    <div class="panel panel-default">
+				  <div class="panel-heading">Week 4</div>
+				  <div class="panel-body">
+					  <form role="form" id="login-form">
+					    <!--button type="button" class="btn" id="load-data-button" style="display: none;">Load Data</button-->
+					    <button type="button" class="btn btn-primary" id="login-button">Login with Facebook</button>
+					    <button type="button" class="btn" id="logout-button" style="display: none;">Logout</button>
+				  	</form>
+				  </div>
+				</div>
+				<br/>
+				<ul class="list-group" id="routes-list"></ul>
+		  </section>
+		</section>
+	</section>
+	
+  <footer></footer>
   
-  <script src="//cdnjs.cloudflare.com/ajax/libs/json2/20121008/json2.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.3/underscore-min.js"></script>
-  <!--<script src="//cdn.firebase.com/v0/firebase.js"></script>-->
-  <script src="//cdn.firebase.com/js/client/2.0.0/firebase.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
-  <script src="backfire.js"></script>
-  <script src="transport-app.js"></script>
+  <script data-main="js/app" src="js/lib/require.js"></script> 
 
   <!-- Templates -->
 
-  <!--script type="text/template" id="item-template">
-  </script-->
-</body>
+  <script type="text/template" id="route-item-template">
+    <div><strong>Bus Line</strong>: <%=id %> (<%=vehicles %>)</div>
+  </script>
+
+  </body>
 </html>
