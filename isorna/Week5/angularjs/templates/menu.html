@@ -1,0 +1,9 @@
+<ul class="nav nav-pills nav-stacked" 
+    role="tablist" >
+  <li 
+    ng-repeat="oElement in menuItems" 
+    ng-init="iStep = $index"
+    role="presentation" ng-class="{active: rutaActual.toLowerCase() === '/' + oElement.toLowerCase()}"><a href="/{{ oElement }}">{{ iStep }}: {{ oElement }}</a></li>
+</ul>
+<pre>{{ruta}}</pre>
+<pre>{{rutaActual}}</pre>

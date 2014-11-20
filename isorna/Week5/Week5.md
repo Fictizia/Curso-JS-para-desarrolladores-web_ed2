@@ -44,11 +44,29 @@ Week 5 Milestone
 
 ## MVC, MVV, MVVC, MV*
 
-* _Thursday class_ __[JavaScript MV* Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp)__.
+* __[JavaScript MV* Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailmvcmvp)__.
 
 ## AngularJS introduction
 
-* _Thursday class_[example app](fictizia-angularjs.firebaseapp.com).
+* __Directive__
+ * Apply special behaviour to attributes or elements in HTML, thanks to `$compile`, AngularJS's HTML Compiler object.
+ * Restricted by type.
+ * Uses dashed-case.
+ * `ng-app`.
+ * `ng-view`. 
+ * `ng-include`.
+* __Binding__
+ * `ng-model`.
+ * [Template -> View <-> Model](https://docs.angularjs.org/guide/databinding).
+ * Using a __fixture__ until having a database.
+* __Route__
+ * _"If this, then that"_.
+* __Controller__
+ * App UI logic.
+ * Uses CamelCase.
+ * Contains `$scope` with local variables and methods.
+* [Example app](https://fictizia-angularjs.firebaseapp.com).
+* [Native databinding in JavaScript with Objectobserve - Chrome](http://www.html5rocks.com/en/tutorials/es7/observe/).
 
 ## Firebase
 
