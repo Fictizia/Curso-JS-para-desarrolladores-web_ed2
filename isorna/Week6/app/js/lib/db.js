@@ -33,8 +33,8 @@ define(['firebase'], function (Firebase) {
         // https://www.firebase.com/docs/web/guide/login/password.html
         cache._auth = function (pcEmail, pcPassword) {
             cache.oRef.authWithPassword({
-                email    : pcEmail,
-                password : pcPassword
+                email: pcEmail,
+                password: pcPassword
             }, cache._onAuth, {
                 remember: "sessionOnly"
             });
@@ -46,6 +46,19 @@ define(['firebase'], function (Firebase) {
         
         cache._getAuth = function () {
             return cache.oRef.getAuth();
+        };
+        
+        cache._createUser = function (pcEmail, pcPassword) {
+            cache.oRef.createUser({
+                email: pcEmail,
+                password: pcPassword
+            }, function(poError) {
+                if (poError === null) {
+                    console.log("User created successfully");
+                } else {
+                    console.log("Error creating user:", poError);
+                }
+            });
         };
         
         cache._initialize = function (pcDB_URL, poFunctions) {
@@ -66,7 +79,8 @@ define(['firebase'], function (Firebase) {
             disconnect: cache._disconnect,
             auth: cache._auth,
             unauth: cache._unauth,
-            getAuth: cache._getAuth
+            getAuth: cache._getAuth,
+            createUser: cache._createUser
         };
     };
     

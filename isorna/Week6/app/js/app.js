@@ -47,6 +47,15 @@ requirejs(['classes', 'db'], function (classes, db) {
         document.querySelector('#logoutUser').className = 'hidden';
     });
     
+    document.querySelector('#newUser').addEventListener('click', function newUser_onClick (event) {
+        oMyAppDB.createUser(document.querySelector('#userEmail').value, document.querySelector('#userPwd').value);
+        
+        if (oMyAppDB.getAuth()) {
+            document.querySelector('#loginUser').className = 'hidden';
+            document.querySelector('#logoutUser').className = '';
+        }
+    });
+    
 //         function db_loadRoutes () {
 //             // ...
 //         };
