@@ -28,8 +28,6 @@ requirejs(['classes', 'db'], function (classes, db) {
     //Firebase and the classes module are all
     //loaded and can be used here now.
     
-    console.log('loaded!');
-    
     oMyAppDB = db.newDB(cDB_URL);
     
     document.querySelector('#loginUser').addEventListener('click', function loginUser_onClick (event) {
@@ -59,8 +57,9 @@ requirejs(['classes', 'db'], function (classes, db) {
 //         function db_loadRoutes () {
 //             // ...
 //         };
-        
 //         function db_loadVehicles () {
 //             // ...
 //         };
+    
+    console.log('loaded!');
 });

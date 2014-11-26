@@ -44,9 +44,33 @@ Week 6 Milestone
 
 ## Grunt, Gulp, Bower, Yeoman
 
-* _Thursday class_
+* [Introduction to Grunt](http://www.blog.teraswap.com/grunt-introducion/).
+* [Introduction to Gulp](http://www.blog.teraswap.com/gulp-introduccion/).
+* [Using Grunt for live reload](http://thecrumb.com/2014/03/15/using-grunt-for-live-reload/).
+* __Installation:__
+ * [`npm install -g grunt-cli`](http://gruntjs.com/getting-started)
+ * [`npm install -g grunt-init`](http://gruntjs.com/project-scaffolding)
+ * `grunt-init --help`
+* Install Grunt __inside your app folder__ with `npm install grunt`.
+* [Install some grunt templates](https://github.com/gruntjs/).
+ * `git clone https://github.com/gruntjs/grunt-init-gruntfile.git ~/.grunt-init/gruntfile`.
+ * `grunt-init gruntfile`.
+* Add `name` and `version` properties to your package.json file.
+* Install `package.json` dependencies __inside your app folder__ with `sudo npm install`.
+* Add a new dependency to your Gruntfile with `__sudo__ npm install <module> --save-dev`.
+ * `__sudo__ npm install grunt-contrib-watch --save-dev`
+* [Configure your Gruntfile watch process](https://github.com/gruntjs/grunt-contrib-watch).
+* Start the watch process with `grunt watch`, then modify any .js file and save it.
+
+* [Gulp.js](http://gulpjs.com/).
+* [Bower](http://bower.io/).
+* [Yeoman](http://yeoman.io/learning/index.html).
 
 ## Practice
 
 * Finish our web app.
 * Create a MongoLab account, then connect with it from c9 terminal and create a new collection, to see it works.
+
+* Configure Gruntfile.js and package.json files inside your app.
+* Add a dependency to `firebase-tools v 1.1.4` inside your package.json.
+* Then run `sudo npm install` again to update the local project.
