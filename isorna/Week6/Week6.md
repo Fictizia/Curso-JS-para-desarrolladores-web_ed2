@@ -57,8 +57,8 @@ Week 6 Milestone
  * `grunt-init gruntfile`.
 * Add `name` and `version` properties to your package.json file.
 * Install `package.json` dependencies __inside your app folder__ with `sudo npm install`.
-* Add a new dependency to your Gruntfile with `__sudo__ npm install <module> --save-dev`.
- * `__sudo__ npm install grunt-contrib-watch --save-dev`
+* Add a new dependency to your Gruntfile with `sudo npm install <module> --save-dev`.
+ * `sudo npm install grunt-contrib-watch --save-dev`
 * [Configure your Gruntfile watch process](https://github.com/gruntjs/grunt-contrib-watch).
 * Start the watch process with `grunt watch`, then modify any .js file and save it.
 
