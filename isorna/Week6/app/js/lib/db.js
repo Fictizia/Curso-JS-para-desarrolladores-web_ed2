@@ -4,7 +4,7 @@ define(['firebase'], function (Firebase) {
         var cache = {};
             
         cache._onValue = function (poSnapshot) {
-            console.log(poSnapshot.val());
+            console.log('snapshot', poSnapshot.val());
         };
         
         cache._onError = function (poErrorObject) {
