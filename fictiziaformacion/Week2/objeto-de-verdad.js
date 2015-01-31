@@ -2,7 +2,14 @@
 
 // declaro mi app
 
-var miApp = {};
+/*
+    miApp
+        .clases: clases de objetos
+        .estudiantes: gestión de estudiantes
+        .cursos: gestión de los cursos
+*/
+
+var miApp = miApp || {};
 
 // declaro el namespace de clases
 
@@ -60,4 +67,38 @@ miApp.clases.Persona2 = function (pcNombre){
     }
 };
 
-var miYo = miApp.clases.Persona2('Alvaro');
+miApp.clases.Estudiante = {
+    nacionalidad: '',
+    edad: 18
+};
+
+miApp.estudiantes = {
+    listadoEstudiantes: [],
+    nuevoEstudiante: function (pcNombre) {
+        var oNuevaPersona = miApp.clases.Persona2(pcNombre);
+        
+        miApp.utilidades.mixin(oNuevaPersona, miApp.clases.Estudiante);
+        
+        console.log('Añade nuevo estudiante', oNuevaPersona);
+        
+        this.listadoEstudiantes.push(oNuevaPersona);
+    }
+};
+
+// funciones genericas
+miApp.utilidades = {};
+
+miApp.utilidades.mixin = function (poTarget, poSource) {
+    function copyProperty (poKey) {
+        poTarget[poKey] = poSource[poKey];
+    }
+
+    if (arguments.length > 2) {
+        // If there are arguments beyond target and source then treat them as
+        // keys of the specific properties/methods that should be copied over.
+        Array.prototype.slice.call(arguments, 2).forEach(copyProperty);
+    } else {
+        // Otherwise copy all properties/methods from the source to the target.
+        Object.keys(poSource).forEach(copyProperty);
+    }
+};
