@@ -12,13 +12,13 @@ miApp.clases.board = function() {};
 miApp.clases.list = function() {};
 
 // notas como elemento
-miApp.clases.notas = function() {};
+miApp.clases.cards = function() {};
 
 // Notas y su información
-miApp.clases.notas.info = [];
+miApp.clases.cards.info = [];
 
 // notas y sus acciones
-miApp.clases.notas.action = [];
+miApp.clases.cards.action = [];
 
 // usuarios como elementos
 miApp.clases.usuarios = function() {};
