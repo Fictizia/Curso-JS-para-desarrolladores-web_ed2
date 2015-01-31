@@ -24,20 +24,7 @@ Klass2 = function () {
 }
 
 
-// Module pattern with cached functions
-var funcionPublica1 = function () {
-  console.log('foo');
-};
-var funcionPublica2 = function () {
-  console.log('bar');
-};
 
-Klass3 = function () {
-  return {
-      funcionExterna1: funcionPublica1,
-      funcionExterna2: funcionPublica2
-  }
-}
 
 // Class conscructor
 (function(){
