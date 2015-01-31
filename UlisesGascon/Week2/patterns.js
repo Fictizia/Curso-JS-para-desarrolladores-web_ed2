@@ -23,6 +23,8 @@ C1.prototype.var2 = function () {
 }
 
 
+var MyKlass1 = new C1;
+
 // Module pattern
 var C2 = function () {
   var var1 = function () {
@@ -52,6 +54,10 @@ var C3 = function () {
 }
 
 
+//llamada
+var MyKlass = C3;
+
+
 
 
 // Class conscructor
@@ -59,7 +65,7 @@ var C3 = function () {
     var exports = {};
     function privateUtil() {
             var privada1 = 23;
-            console.log("Esta función es privada y añado el valor de la funcion privada1 que es" +privada1+);
+            console.log("Esta función es privada y añado el valor de la funcion privada1 que es", privada1);
     }
 
     exports.publicUtil = function() {
