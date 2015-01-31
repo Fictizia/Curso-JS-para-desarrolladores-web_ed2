@@ -1,40 +1,41 @@
 // Prototypal pattern
 Klass1 = function () {}
-Klass1.prototype.foo = function () {
-  log('foo');
+Klass1.prototype.funcionExterna1 = function () {
+  console.log('foo');
 }
-Klass1.prototype.bar = function () {
-  log('bar');
+Klass1.prototype.funcionExterna2 = function () {
+  console.log('bar');
 }
 
 // Module pattern
 Klass2 = function () {
-  var foo = function () {
-      log('foo');
+  var _funcionInterna1 = function () {
+      console.log('foo');
   },
-  bar = function () {
-      log('bar');
+  _funcionInterna2 = function () {
+      console.log('bar');
   };
-
-  return {
-      foo: foo,
-      bar: bar
-  }
+  var objetoNuevo = {
+      funcionExterna1: _funcionInterna1,
+      funcionExterna2: _funcionInterna2
+  };
+  
+  return objetoNuevo;
 }
 
 
 // Module pattern with cached functions
-var FooFunction = function () {
-  log('foo');
+var funcionPublica1 = function () {
+  console.log('foo');
 };
-var BarFunction = function () {
-  log('bar');
+var funcionPublica2 = function () {
+  console.log('bar');
 };
 
 Klass3 = function () {
   return {
-      foo: FooFunction,
-      bar: BarFunction
+      funcionExterna1: funcionPublica1,
+      funcionExterna2: funcionPublica2
   }
 }
 
@@ -43,11 +44,11 @@ Klass3 = function () {
     var exports = {};
 
     function privateUtil() {
-            ...
+            //...
     }
 
     exports.publicUtil = function() {
-            ...
+            //...
     };
 
     return exports;
