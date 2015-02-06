@@ -37,7 +37,7 @@ doWork(function callback() {
  * Always define __Array__ vars min length, grow as you need. All elements inside an Array should be of the same type.
  * If you need an index for a collection, use an __Array__, otherwise use an __Object__.
  * Clean up observers, and nullify unused vars.
- * Don't use __DOM Reflows__, use __DocumentFragment__ instead.
+ * Don't use __DOM Reflows__, use [__DocumentFragment__](https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment) instead.
 
 * In-depth explanation of variables.
  * [Data Structures](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures).
