@@ -2,6 +2,7 @@ Week 1 Milestone
 ===================
 
 * Setup git: `git config remote.origin.push HEAD`.
+ *  Git commands: `git status`, `git add`, `git rm`, `git pull`, `git commit -m "Commit message"`, `git push`.
 
 * Review JavaScript.
  * Talk briefly about modern JavaScript engines: __Chrome V8__, __Firefox SpiderMonkey__, __IE Chakra__, __Opera Carakan__.
