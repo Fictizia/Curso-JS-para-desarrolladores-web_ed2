@@ -44,7 +44,9 @@ Week 3 Milestone
 
 * [Generic Firebase tutorial](http://thejackalofjavascript.com/getting-started-with-firebase/).
 
-## Practice 1
+## Practice
+
+* Integrate [Backfire](https://github.com/firebase/backbonefire) in your app, and link your database to backbone.
 
 * Use facebook login for our backbone app.
  * __Change the link to the latest version of firebase:__ `//cdn.firebase.com/js/client/1.1.3/firebase.js`.
@@ -52,9 +54,6 @@ Week 3 Milestone
  * [Follow firebase login guidelines](https://www.firebase.com/docs/web/guide/user-auth.html).
  * [Set up firebase security rules](https://www.firebase.com/docs/security/guide/user-security.html).
  * Use firebase logged user data to show it's portrait when he's logged in.
-* Use [Open Data EMT](http://opendata.emtmadrid.es/Servicios-web/BUS) for reading bus lines' information.
-
-## Practice 2
 
 * Create, Update & Delete from our firebase db (__push__, __update__, __remove__).
  * [Saving Data](https://www.firebase.com/docs/web/guide/saving-data.html).
