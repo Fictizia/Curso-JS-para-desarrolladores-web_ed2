@@ -2,7 +2,34 @@
 
 /*Estructura de datos
 
-
+{
+  "Bebidas" : {
+    "id" : {
+      "id", 
+      "graduacion",
+      "logo",
+      "nombre",
+      "precio",
+      "volumen"
+    }
+  },
+  "Consumiciones" : {
+    "id" : {
+      "id",
+      "cerveza",   relacionar con colección Bebidas
+      "hora",
+      "usuario"    relacionar con colección Usuarios
+    },
+  },
+  "Usuarios" : {
+    "id" : {
+      "id",
+      "nombre",
+      "peso",
+      "genero"
+    },
+  }
+}
 
 
 
