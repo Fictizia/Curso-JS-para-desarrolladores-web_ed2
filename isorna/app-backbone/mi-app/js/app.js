@@ -86,7 +86,7 @@ $(function(){
         _fAddOne: function (poModel) {
             var newView = new oAcademia.clases.FichaEstudiante({model: poModel});
             oAcademia.vistas.alumnos.push(newView);
-            console.log('add one', poItem, newView);
+            console.log('add one', poModel, newView);
             
             $('#alumn-list').append(newView.render().el);
         },
