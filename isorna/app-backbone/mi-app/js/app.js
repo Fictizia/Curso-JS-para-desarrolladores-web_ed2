@@ -86,7 +86,7 @@ $(function(){
         _fAddOne: function (poModel) {
             var newView = new oAcademia.clases.FichaEstudiante({model: poModel});
             oAcademia.vistas.alumnos.push(newView);
-            console.log('add one', poModel, newView);
+            console.log('add one view for model id: ', poModel.id, newView.cid);
             
             $('#alumn-list').append(newView.render().el);
         },
@@ -123,7 +123,7 @@ $(function(){
     oAcademia.modelos.misAlumnos = new oAcademia.clases.ListadoEstudiantes();
     
     oAcademia.modelos.misAlumnos.on('sync', function(collection) {
-        console.log('ESTUDIANTES collection is loaded', collection);
+        console.log('ESTUDIANTES collection is loaded', collection.models.length + ' models');
     });
     oAcademia.modelos.misAlumnos.on('all', function(event) {
       // if autoSync is true this will log add and sync
@@ -134,7 +134,7 @@ $(function(){
     oAcademia.modelos.misCursos = new oAcademia.clases.ListadoCursos();
     
     oAcademia.modelos.misCursos.on('sync', function(collection) {
-        console.log('CURSOS collection is loaded', collection);
+        console.log('CURSOS collection is loaded', collection.models.length + ' models');
     });
     oAcademia.modelos.misCursos.on('all', function(event) {
       // if autoSync is true this will log add and sync
