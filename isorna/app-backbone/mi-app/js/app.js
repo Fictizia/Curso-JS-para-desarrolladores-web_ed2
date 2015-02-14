@@ -21,7 +21,12 @@ $(function(){
     var oAcademia = {};
     
     oAcademia.clases = {};
-    oAcademia.clases.Estudiante = Backbone.Model.extend({});
+    oAcademia.clases.Estudiante = Backbone.Model.extend({
+        defaults: {
+            nombre: 'nombre no descrito',
+            edad: 0
+        }
+    });
     oAcademia.clases.Curso = Backbone.Model.extend({
         defaults: {
             nombre: 'curso no descrito',
@@ -29,7 +34,8 @@ $(function(){
         }
     });
     oAcademia.clases.Profesor = Backbone.Model.extend({});
-    oAcademia.clases.ListadoEstudiantes = Backbone.Collection.extend({
+    oAcademia.clases.ListadoEstudiantes = Backbone.Firebase.Collection.extend({
+        url: 'https://fictizia-backbone.firebaseio.com/alumnos',
         model: oAcademia.clases.Estudiante
     });
     oAcademia.clases.ListadoCursos = Backbone.Firebase.Collection.extend({
@@ -47,7 +53,8 @@ $(function(){
         events: {
             // aqui iran los eventos de la app
             'click .page-title': '_fTitleClick',
-            'click .menu-item': '_fMenuClick'
+            'click .menu-item': '_fMenuClick',
+            'submit #formAlumnos': '_fFormAlumnosSubmit'
         },
         initialize: function () {
             console.log('inicializo mi app');
@@ -70,21 +77,37 @@ $(function(){
             poEvent.preventDefault();
             poEvent.stopPropagation();
         },
+        _fFormAlumnosSubmit: function (poEvent) {
+            console.log('submit');
+            
+            oAcademia.modelos.misAlumnos.add({
+                nombre: $('[name=Nombre]').val(),
+                edad:$('[name=Edad]').val()
+            });
+            
+            poEvent.preventDefault();
+        },
         // templates de mi app
         _tFooterTemplate: _.template($('#footer-template').html())
     });
     
     oAcademia.modelos = {};
     
+    oAcademia.modelos.misAlumnos = new oAcademia.clases.ListadoEstudiantes();
+    
+    oAcademia.modelos.misAlumnos.on('sync', function(collection) {
+        console.log('ESTUDIANTES collection is loaded', collection);
+    });
+    
     oAcademia.modelos.misCursos = new oAcademia.clases.ListadoCursos();
     
     oAcademia.modelos.misCursos.on('sync', function(collection) {
-        console.log('collection is loaded', collection);
+        console.log('CURSOS collection is loaded', collection);
     });
     oAcademia.modelos.misCursos.on('all', function(event) {
       // if autoSync is true this will log add and sync
       // if autoSync is false this will only log add
-      console.log(event);
+      console.log('Nuevo evento:', event);
     });
     
     oAcademia.vistas = {};
