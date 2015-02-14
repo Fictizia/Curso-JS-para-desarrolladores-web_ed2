@@ -82,8 +82,9 @@ $(function(){
             evento.preventDefault();
             
         },
-       _AnadirVista: function(modelo){
-            var nuevaVista = new oTienda.clases.FichaProducto({model:modelo});
+        _AnadirVista: function(modelo){ // buscar por aqui
+            console.log(modelo);
+            var nuevaVista = new oTienda.clases.ListadoProductos({model:modelo});
             oTienda.clases.ListadoProductos.push(nuevaVista);
             
             $('#listado').append(nuevaVista.render().el);
