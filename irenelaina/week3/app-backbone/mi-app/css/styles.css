@@ -1,0 +1,37 @@
+
+*{
+    font-family: arial, sans-serif;
+}
+
+
+h2{
+  font-size: 16px;  
+}
+
+ol,
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.menu-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+.menu-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2em 0 0;
+    width: auto;
+}
+.menu-item a{
+    color: #666;
+}
+
+#users-list p{
+    width: auto;
+    display: inline-block;
+    vertical-align:  middle;
+    margin: 1 1em 0 0;
+}

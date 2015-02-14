@@ -38,16 +38,34 @@ $(function(){
     oBote.clasesTransaction = Backbone.Model.extend({});
     oBote.clases.Concepto = Backbone.Model.extend({});
     
-    oBote.clases.ListadoEvents = Backbone.Collection.extend({
-        model: oBote.Event
+    oBote.clases.ListadoEvents = Backbone.Firebase.Collection.extend({
+        url: 'https://bote.firebaseio.com/events',
+        model: oBote.clases.Event
     });
     oBote.clases.ListadoUsers = Backbone.Firebase.Collection.extend({ 
         url: 'https://bote.firebaseio.com/users',
-        model: oBote.User
+        model: oBote.clases.User
     });
     oBote.clases.ListadoConceptos = Backbone.Collection.extend({ 
-        model: oBote.Concepto
+        model: oBote.clases.Concepto
     });
+    
+    
+    
+    oBote.clases.FichaUsers = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#users-template').html()),
+        initialize: function () {
+            console.log('view initialized');
+        },
+        render: function(){
+            this.$el.html(this.template(this.model.toJSON()));
+            console.log('view rendered');
+            
+            return this;
+        }
+    });
+    
     
     
     //clase de mi aplicacion
@@ -58,12 +76,17 @@ $(function(){
             //aquí iran los eventos de la app
             'click .page-title': '_fTitleClick',
             'click .logo': '_fLogo',
-            'submit #formUsers': '_fFormUsers'
+            'click .menu-link' : '_fMenuClick',
+            'submit #formUsers': '_fFormUsersSubmit',
+            'submit #formActividad': '_fFormActividadSubmit'
         },
         //se lanza siempre que hacemos una instancia
         initialize: function (){
             console.log('inicializo mi app');
-            $('.page-header').html(this._tHeaderTemplate({})),
+            
+            this.listenTo(oBote.modelos.misUsuarios, 'add', this._fAddOne);
+            
+           // $('.page-header').html(this._tHeaderTemplate({})),
             $('.page-footer').html(this._tFooterTemplate({
                 fecha: new Date()
             }));
@@ -71,20 +94,51 @@ $(function(){
         render: function (){
             console.log ('renderizo mi app');
         },
-        //eventos de mi app
+        
+        // eventos de mi app
+        _fAddOne: function (poModel) {
+            var newView = new oBote.clases.FichaUsers({model: poModel});
+            oBote.vistas.users.push(newView);
+            console.log('add one', poModel, newView);
+            
+            $('#users-list').append(newView.render().el);
+        },
         _fTitleClick: function() {
             console.log ('hice click en el title');  
         },
-        _fLogo: function (e) {
-            e.preventDefault();
+        _fLogo: function (poEvent) {
+            poEvent.preventDefault();
             console.log ('hice click en el logo');
         },
-        _fFormUsers: function (poEvent) {
-            console.log('submit');
-            poEvent.preventDefault;
+        _fMenuClick: function (poEvent) {
+            poEvent.preventDefault();
+            poEvent.stopPropagation();
+            
+            var cURL = poEvent.currentTarget.href.split('#')[1];
+            console.log('click del menu', cURL);
+        },
+        _fFormActividadSubmit: function (poEvent) {
+            poEvent.preventDefault();
+            console.log('Actividad añadida');
+            
+            oBote.modelos.misEventos.add({
+                concept: $('[name=Concepto]').val(),
+                amount: $('[name=Cantidad]').val(),
+                date: $('[name=Fecha]').val()
+            });
+        },
+        _fFormUsersSubmit: function (poEvent) {
+            poEvent.preventDefault();
+            console.log('Usuario añadido');
+            
+            oBote.modelos.misUsuarios.add({
+                name: $('[name=Nombre]').val(),
+                lastname: $('[name=Apellidos]').val()
+            });
+            
         },
         // templates de mi app
-        _tHeaderTemplate: _.template($('#header-template').html()),
+        //_tHeaderTemplate: _.template($('#header-template').html()),
         _tFooterTemplate: _.template($('#footer-template').html())
     });
 
@@ -93,17 +147,24 @@ $(function(){
     
     oBote.modelos.misUsuarios = new oBote.clases.ListadoUsers();
     
-    oBote.modelos.misUsuarios.on('sync', function(collection) {
-        console.log('collection is loaded', collection);
+    oBote.modelos.misUsuarios.on('sync', function (collection) {
+        console.log('USUARIOS collection is loaded', collection);
+    });
+    
+    oBote.modelos.misEventos = new oBote.clases.ListadoEvents();
+    
+    oBote.modelos.misEventos.on('sync', function (collection) {
+        console.log('EVENTS collection is loaded', collection);
     });
     
     oBote.vistas = {};
     
     
     oBote.vistas.miApp = new oBote.clases.App;
+    oBote.vistas.users = [];
     
-    console.log(oBote);
+    //console.log(oBote);
     
-    window.oBote = oBote;
+    window.goBote = oBote;
 
 });    
