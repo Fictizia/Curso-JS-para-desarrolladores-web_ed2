@@ -24,9 +24,16 @@
 	    	<input type="text" name="Edad" placeholder="Edad" required />
 	    	<input type="submit" value="Submit"/>
 	    </form>
+	    <ol id="alumn-list"></ol>
 	    <footer class="page-footer"></footer>
 	</div>
 	
+	<script type="text/template" id="student-template">
+		<section class="student-data">
+			<p><strong>Nombre:</strong>&nbsp;<%= nombre %></p>
+			<p><strong>Edad:</strong>&nbsp;<%= edad %></p>
+		</section>
+	</script>
 	<script type="text/template" id="footer-template">
         <p>fictizia formacion &copy; <%= fecha %>.</p>
 	</script>

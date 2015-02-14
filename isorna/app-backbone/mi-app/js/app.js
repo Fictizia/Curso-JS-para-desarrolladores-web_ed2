@@ -45,7 +45,19 @@ $(function(){
     oAcademia.clases.ListadoProfesores = Backbone.Collection.extend({
         model: oAcademia.Profesor
     });
-    oAcademia.clases.FichaEstudiante = Backbone.View.extend({});
+    oAcademia.clases.FichaEstudiante = Backbone.View.extend({
+        tagName: 'li',
+        template: _.template($('#student-template').html()),
+        initialize: function () {
+            console.log('view initialized');
+        },
+        render: function (){
+            this.$el.html(this.template(this.model.toJSON()));
+            console.log('view rendered');
+            
+            return this;
+        }
+    });
     oAcademia.clases.FichaCurso = Backbone.View.extend({});
     oAcademia.clases.FichaProfesor = Backbone.View.extend({});
     oAcademia.clases.App = Backbone.View.extend({
@@ -58,14 +70,29 @@ $(function(){
         },
         initialize: function () {
             console.log('inicializo mi app');
+            
+            this.listenTo(oAcademia.modelos.misAlumnos, 'add', this._fAddOne);
+            //this.listenTo(oAcademia.modelos.misAlumnos, 'reset', this._fAddAll);
+            //this.listenTo(oAcademia.modelos.misAlumnos, 'all', this.render);
+            
             $('.page-footer', this.$el).html(this._tFooterTemplate({
                 fecha: new Date()
             }));
         },
-        render: function () {
-            console.log('renderizo mi app');
+        render: function (poItem) {
+            console.log('renderizo mi app', poItem);
         },
         // eventos de mi app
+        _fAddOne: function (poModel) {
+            var newView = new oAcademia.clases.FichaEstudiante({model: poModel});
+            oAcademia.vistas.alumnos.push(newView);
+            console.log('add one', poItem, newView);
+            
+            $('#alumn-list').append(newView.render().el);
+        },
+        _fAddAll: function (poItems) {
+            console.log('add all', poItems);
+        },
         _fTitleClick: function (poEvent) {
             console.log('hice click en el title');
         },
@@ -118,6 +145,7 @@ $(function(){
     oAcademia.vistas = {};
     
     oAcademia.vistas.miApp = new oAcademia.clases.App;
+    oAcademia.vistas.alumnos = [];
     
     window.goAcademia = oAcademia;
 });
