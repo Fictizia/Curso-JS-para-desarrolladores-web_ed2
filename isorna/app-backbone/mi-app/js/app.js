@@ -98,6 +98,11 @@ $(function(){
     oAcademia.modelos.misAlumnos.on('sync', function(collection) {
         console.log('ESTUDIANTES collection is loaded', collection);
     });
+    oAcademia.modelos.misAlumnos.on('all', function(event) {
+      // if autoSync is true this will log add and sync
+      // if autoSync is false this will only log add
+      console.log('Nuevo evento:', event);
+    });
     
     oAcademia.modelos.misCursos = new oAcademia.clases.ListadoCursos();
     
