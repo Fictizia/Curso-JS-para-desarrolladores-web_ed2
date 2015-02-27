@@ -3,13 +3,36 @@
 <head>
 	<meta charset="utf-8">
 	<title>mi app</title>
+	<link rel="stylesheet" href="css/styles.css" type="text/css" />
 </head>
 <body>
     <div id="miApp">
+    	<header>
+    		<nav>
+    			<ol class="menu-wrapper">
+    				<li><a class="menu-item" href="#inicio">Inicio</a></li>
+    				<li><a class="menu-item" href="#alumnos">Alumnos</a></li>
+    				<li><a class="menu-item" href="#cursos">Cursos</a></li>
+    				<li><a class="menu-item" href="#profesores">Profesores</a></li>
+    			</ol>
+    		</nav>
+    	</header>
 	    <h1 class="page-title">Mi app</h1>
+	    <form id="formAlumnos">
+	    	<h2>Alumnos</h2>
+	    	<input type="text" name="Nombre" placeholder="Nombre" required />
+	    	<input type="text" name="Edad" placeholder="Edad" required />
+	    	<input type="submit" value="Submit"/>
+	    </form>
+	    <ol id="alumn-list"></ol>
 	    <footer class="page-footer"></footer>
 	</div>
 	
+	<script type="text/template" id="student-template">
+		<section class="student-data">
+			<p><strong>Nombre:</strong>&nbsp;<%= nombre %>, <strong>edad:</strong>&nbsp;<%= edad %></p>
+		</section>
+	</script>
 	<script type="text/template" id="footer-template">
         <p>fictizia formacion &copy; <%= fecha %>.</p>
 	</script>

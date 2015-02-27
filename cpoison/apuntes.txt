@@ -1,0 +1,4 @@
+bind() nos permite cambiar el this asociado a esa funcion
+call() nos permite cambiar el entorno de ejecucion de una funcion //  
+
+event.bubbles
