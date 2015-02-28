@@ -39,17 +39,16 @@ $(function(){
     oBote.clases.Concepto = Backbone.Model.extend({});
     
     oBote.clases.ListadoEvents = Backbone.Firebase.Collection.extend({
-        url: 'https://bote.firebaseio.com/events',
+        url: 'https://appachas.firebaseio.com/events',
         model: oBote.clases.Event
     });
     oBote.clases.ListadoUsers = Backbone.Firebase.Collection.extend({ 
-        url: 'https://bote.firebaseio.com/users',
+        url: 'https://appachas.firebaseio.com/users',
         model: oBote.clases.User
     });
     oBote.clases.ListadoConceptos = Backbone.Collection.extend({ 
         model: oBote.clases.Concepto
     });
-    
     
     
     oBote.clases.FichaUsers = Backbone.View.extend({
@@ -65,7 +64,6 @@ $(function(){
             return this;
         }
     });
-    
     
     
     //clase de mi aplicacion
