@@ -1,5 +1,5 @@
 {
-  "firebase": "backbone-app",
+  "firebase": "appachas",
   "public": ".",
   "ignore": [
     "firebase.json",
