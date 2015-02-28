@@ -76,7 +76,8 @@ $(function(){
             // aqui iran los eventos de la app
             'click .page-title': '_fTitleClick',
             'click .menu-item': '_fMenuClick',
-            'submit #formAlumnos': '_fFormAlumnosSubmit'
+            'submit #formAlumnos': '_fFormAlumnosSubmit',
+            'click [href="#login"]': '_fLogin'
         },
         initialize: function () {
             //console.log('inicializo mi app');
@@ -123,6 +124,18 @@ $(function(){
             });
             
             poEvent.preventDefault();
+        },
+        _fLogin: function (poEvent) {
+            var oRef = new Firebase("https://fictizia-backbone.firebaseio.com");
+            
+            oRef.authWithOAuthPopup("github", function(error, authData) {
+              if (error) {
+                console.log("Login Failed!", error);
+              } else {
+                  console.log("Authenticated successfully with payload:", authData);
+                // We'll never get here, as the page will redirect on success.
+              }
+            });
         },
         // templates de mi app
         _tFooterTemplate: _.template($('#footer-template').html())
