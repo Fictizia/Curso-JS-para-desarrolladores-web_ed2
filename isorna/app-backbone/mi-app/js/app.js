@@ -46,7 +46,7 @@ $(function(){
         model: oAcademia.Profesor
     });
     oAcademia.clases.FichaEstudiante = Backbone.View.extend({
-        tagName: 'li',
+        className: 'row',
         template: _.template($('#student-template').html()),
         initialize: function () {
             console.log('view initialized');
