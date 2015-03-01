@@ -22,16 +22,23 @@ li {
 .menu-item {
     display: inline-block;
     vertical-align: middle;
-    margin: 0 2em 0 0;
+    margin: 0 1em 1em 0;
     width: auto;
 }
 .menu-item a{
     color: #666;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#users-list{
+    margin: 1em 0 2em 0;
 }
 
 #users-list p{
     width: auto;
     display: inline-block;
     vertical-align:  middle;
-    margin: 1 1em 0 0;
+    margin: 1em .5em 0 0;
+    font-size: 14px;
 }
