@@ -54,15 +54,19 @@ hero3.name("Lobezno");
 hero3.fly();
 
 console.log(" Class conscructor ---------------------");
-(function(){
+var hero4 = (function(){
     var exports = {};
+    var _name;
 
     exports.name = function(name) {
-            this.name = name;
+            this._name = name;
     };
     exports.fly = function() {
-            console.log ("Tu superheroe " + this.name  + " vuela");
+            console.log ("Tu superheroe " + this._name  + " vuela");
     };
 
     return exports;
 })();
+
+hero4.name("Capitán America");
+hero4.fly();

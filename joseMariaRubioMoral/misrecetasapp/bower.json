@@ -9,7 +9,6 @@
     "requirejs": "~2.1.5",
     "requirejs-text": "~2.0.5",
     "backbone.localStorage": "~1.1.0",
-    "firebase": "~2.0.3",
-    "polymer": "Polymer/polymer#~0.5.5"
+    "firebase": "~2.0.3"
   }
 }

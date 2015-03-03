@@ -5,8 +5,10 @@ define([
 	"backbone",
 	"views/last20ViewedRecipes",
 	"views/ingredients",
+	"views/categories",
+	"views/addRecipe",
 	"text!templates/last_20_viewed_recipes.html"
-], function ($, _, Backbone, last20ViewedRecipesView, ingredientsView, Last20ViewedRecipesTemplate) {
+], function ($, _, Backbone, last20ViewedRecipesView, ingredientsView, categoriesView, addRecipeView, Last20ViewedRecipesTemplate) {
 	"use strict";
 	var AppView = Backbone.View.extend({
 		el: "#myRecipesApp",
@@ -33,11 +35,16 @@ define([
 		_doIngredients : function(){
 			console.log("he apretado en ingredientes");	
 			var view = new ingredientsView({});
+			view.render();
 		},
 		_doCategories : function(){
+			var view = new categoriesView({});
+			view.render();
 			console.log("he apretado en categorías");	
 		},
 		_doNewReceipe : function(){
+			var view = new addRecipeView({});
+			view.render();
 			console.log("he apretado en nueva receta");	
 		},
 	});

@@ -1,0 +1,21 @@
+<form id="form-new-Recipe">
+    <h2>Nueva Receta</h2>
+    <input type="text" name="recipeName" placeholder="Nombre de la receta" required />
+    <h2>Categoría</h2>
+    <a id="addCategory" href="#" >añadir categoría</a>
+    <ol id="categories-list"></ol>
+    <input type="text" id="categorySelected" placeholder"falta añadirlo a alguna categoría" readonly>
+    <h2>Ingrediente</h2>
+    <a id="addIngredients" href="#" >añadir ingredientes</a>
+    <ol id="ingredients-list"></ol>
+    <input type="text" id="ingredientsSelected" placeholder="falta al menos 1 ingrediente" readonly>
+    <h2>Datos de la receta</h2>
+    <input type="text" name="author" placeholder="autor"/>
+    vegetariano <input type="checkbox" id="vegetarian" name="vegetarian" value="vegetarian">
+    <input type="text" name="preparationTime" placeholder="tiempo de preparación"/>
+    <input type="text" name="totalDishes" placeholder="número de comensales"/>
+    <input type="textarea" name="steps" placeholder="Pasos para realizar la receta" required>
+    <input type="textarea" name="notes" placeholder="Notas de la receta" required>
+    <input type="submit" value="Submit"/>		
+</form>
+

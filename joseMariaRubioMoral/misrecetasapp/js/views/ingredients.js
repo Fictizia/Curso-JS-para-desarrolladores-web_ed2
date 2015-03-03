@@ -5,7 +5,7 @@ define([
 	"backbone",
 	"collections/ingredients",
 	"text!templates/ingredients.html"
-], function ($, _, Backbone, ingredientCollection, ingredientsTemplate) {
+], function ($, _, Backbone, ingredientsCollection, ingredientsTemplate) {
 	"use strict";
 	var IngredientsView = Backbone.View.extend({
 		el: "#myRecipesApp",
@@ -15,18 +15,19 @@ define([
 		},
 		initialize: function () {
 			this.$main = this.$("#main");
-			this.$main.html(this.template);	
-			this.collection = ingredientCollection;
-			this.$ingredientsList = this.$("#ingredients-list");
+			this.collection = ingredientsCollection;
 			this.listenTo(this.collection, 'add', this.addOne);
-			this.listenTo(this.collection, 'reset', this.addAll);
+		},
+		render: function(){
+			this.$main.html(this.template);	
+			this.$ingredientsList = this.$("#ingredients-list");
 			this.addAll();
 		},
 		newIngredientSubmit: function() {
-			ingredientCollection.add({
-            	name:  $("[name=IngredientName]").val(),
-            })
 			event.preventDefault();
+			this.collection.add({
+            	name:  $("[name=IngredientName]").val(),
+            });
 		},
 		addOne: function(model){
 			this.$ingredientsList.append("<li>" + model.toJSON().name + "</li>");

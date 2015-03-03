@@ -33,14 +33,17 @@ $(function(){
     //---------- Collections ----------//
     receipesBook.classes.RecipesCollection = Backbone.Firebase.Collection.extend({
         url: 'https://app-backbone.firebaseio.com/receips',
+        autoSync: false,
         model: receipesBook.classes.Recipe
     });
     receipesBook.classes.IngredientsCollection = Backbone.Firebase.Collection.extend({
         url: 'https://app-backbone.firebaseio.com/ingredients',
+        autoSync: false,
         model: receipesBook.classes.Ingredient
     });
     receipesBook.classes.CategoriesCollection = Backbone.Firebase.Collection.extend({
         url: 'https://app-backbone.firebaseio.com/categories',
+        autoSync: false,
         model: receipesBook.classes.Category
     });
     
@@ -77,7 +80,12 @@ $(function(){
             },
             initialize : function(){
                 console.log(receipesBook);
+                this.listenTo(receipesBook.models.ingredients, 'add', this._AddIngredient); 
                 this.listenTo(receipesBook.models.categories, 'add', this._AddCategory); 
+                
+            },
+            _renderInView: function(template){
+                $('#view', this.$el).html(template);
             },
             _doActionMenu:function(e){
                 var link = e.currentTarget.href.split("#")[1];
@@ -87,9 +95,6 @@ $(function(){
                         $('#view', this.$el).html(this._listViewReceips());
                         break;
                     case "ingredients":
-                        receipesBook.models.ingredients = new receipesBook.classes.IngredientsCollection();
-                        console.log(receipesBook.models.ingredients)
-                        this.listenTo(receipesBook.models.ingredients, 'add', this._AddIngredient);  
                         $('#view', this.$el).html(this._listViewIngredients());
                         break;
                     case "categories":
@@ -100,16 +105,16 @@ $(function(){
                         break;
                     case "newCategory":
                         $('#view', this.$el).html(this._newCategory());
-                        break;                    
+                        break;
                     default:
                         console.log("Incorrect href in the menu");
                 }
                 
             },
             _AddIngredient: function (model) {
+                console.log(model);
                 var newView = new receipesBook.classes.IngredientDetail({model: model});
                 receipesBook.views.ingredientsList.push(newView);
-                $('#ingredients-list').append(newView.render().el);
             },            
             _newIngredientSubmit: function (event) {
                 receipesBook.models.ingredients.add({
@@ -128,11 +133,25 @@ $(function(){
                     name:  $('[name=CategorytName]').val()
                 })
             },            
+            _listViewIngredients: function(){
+                receipesBook.models.ingredients.fetch();
+                this._renderInView(_.template($('#ingredients').html()));
+                var l = receipesBook.views.ingredientsList.length
+                for (var i=0;i<l;i++ ) {
+                    $('#ingredients-list').append(receipesBook.views.ingredientsList[i].render().el);
+                }
+            }, 
+            _listViewCategories: function(){
+                receipesBook.models.categories.fetch();
+                this._renderInView(_.template($('#categories').html()));
+                var l = receipesBook.views.categoriesList.length
+                for (var i=0;i<l;i++ ) {
+                    $('#categories-list').append(receipesBook.views.categoriesList[i].render().el);
+                }                
+            },
             // templates de mi app
             _listViewReceips: _.template($('#receipes').html()),
-            _listViewIngredients: _.template($('#ingredients').html()),
             _newIngredient: _.template($('#new-ingredient').html()),
-            _listViewCategories: _.template($('#categories').html()),
             _newCategory: _.template($('#new-category').html())            
     })
     
@@ -141,16 +160,8 @@ $(function(){
     receipesBook.models.categories = new receipesBook.classes.CategoriesCollection();
     receipesBook.models.ingredients = new receipesBook.classes.IngredientsCollection();
     
-    receipesBook.models.categories.on('sync', function(collection) {
-        console.log('Categories collection is loaded', collection.models.length + ' models');
-    });
-    receipesBook.models.ingredients.on('sync', function(collection) {
-        console.log('Ingredients collection is loaded', collection.models.length + ' models');
-    });
-    
     receipesBook.views = {};
     receipesBook.views.ingredientsList = [];
-    receipesBook.views.categoriesList = [];
-
+    receipesBook.views.categoriesList = [];    
     receipesBook.views.myApp = new receipesBook.classes.App;
 });
