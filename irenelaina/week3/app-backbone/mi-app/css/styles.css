@@ -3,9 +3,15 @@
     font-family: arial, sans-serif;
 }
 
+h1{
+    color: #76BA96;
+    font-weight: bold;
+}
 
 h2{
   font-size: 16px;  
+  font-weight: bold;
+  color: #76BA96;
 }
 
 ol,
@@ -41,4 +47,22 @@ li {
     vertical-align:  middle;
     margin: 1em .5em 0 0;
     font-size: 14px;
+}
+
+#miApp{
+    margin: 30px;
+}
+
+#login{
+    display: none;
+    margin: 20px 20px 40px 20px;
+    width: 20%;
+}
+
+button[type="submit"], input[type="submit"]{
+    background-color: #76BA96;
+}
+
+button[type="submit"]:hover, input[type="submit"]:hover{
+    background-color: #84CFA7;
 }
