@@ -39,6 +39,7 @@ li {
 
 #users-list{
     margin: 1em 0 2em 0;
+    color: #666;
 }
 
 #users-list p{
@@ -61,6 +62,7 @@ li {
 
 button[type="submit"], input[type="submit"]{
     background-color: #76BA96;
+    color: #fff;
 }
 
 button[type="submit"]:hover, input[type="submit"]:hover{

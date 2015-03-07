@@ -137,7 +137,7 @@ $(function(){
         },
         _fLogin: function(poEvent){
             
-            $('#login').slideDown();
+            $('#login').slideToggle();
             
             var oRef = new Firebase("https://bote.firebaseio.com");
                 oRef.createUser({
