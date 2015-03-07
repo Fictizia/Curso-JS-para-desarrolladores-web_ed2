@@ -40,3 +40,4 @@ require([
 	// Initialize the application view
 	new AppView();
 });
+

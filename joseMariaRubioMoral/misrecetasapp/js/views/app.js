@@ -20,32 +20,27 @@ define([
         },		
 		template: _.template(Last20ViewedRecipesTemplate),
         initialize : function(){
-            console.log("initialize");
             this.$main = this.$("#main");
-            //TODO change this event
             this._doInit();
+            var ingredients, categories, newRecipe
         },
         render: function () {
         	this.$main.html(this.template);
         },
         _doInit: function(){
-        	console.log("he apretado en init");
         	this.render();
         },
 		_doIngredients : function(){
-			console.log("he apretado en ingredientes");	
-			var view = new ingredientsView({});
-			view.render();
+			this.ingredients = this.ingredients  || new ingredientsView({});
+			this.ingredients.render();
 		},
 		_doCategories : function(){
-			var view = new categoriesView({});
-			view.render();
-			console.log("he apretado en categorías");	
+			this.categories = this.categories  || new categoriesView({});
+			this.categories.render();			
 		},
 		_doNewReceipe : function(){
-			var view = new addRecipeView({});
-			view.render();
-			console.log("he apretado en nueva receta");	
+			this.newRecipe = this.newRecipe  || new addRecipeView({});
+			this.newRecipe.render();
 		},
 	});
 	return AppView;
