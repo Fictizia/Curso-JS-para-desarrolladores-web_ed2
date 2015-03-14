@@ -36,23 +36,18 @@ define([
 			this.$ingredientsSelected.hide();			
 		},
 		//---------- Form Section ----------//
-		newRecipeSubmit: function() {
+		newRecipeSubmit: function(){ 
 			event.preventDefault();
 		},
 		//---------- Categories section ----------//
 		addCategory: function(){
 			this.listenTo(this.categoriesCollection, 'add', this.addOneCategory);
 			this.addAllCategories();
-			categoriesCollection.on('all', function(ev) {
-  				console.log('collection something');
-  				console.log(ev)
-			});
 			this.categoriesCollection.fetch();
 			this.$categoriesList.show();
 		},
 		addOneCategory: function(model){
-			console.log(model);
-			this.$categoriesList.append("<li><input type='radio' name='category' class='addCategoryRadioButton' value="+ model.toJSON().name +">" + model.toJSON().name + "</li>");
+			this.$categoriesList.append("<li><input type='radio' name='category' class='addCategoryRadioButton' value='"+ model.attributes.name +"'>" + model.attributes.name + "</li>");
 		},
 		addAllCategories: function () {
 		    this.$categoriesList.empty();
@@ -69,7 +64,7 @@ define([
 			this.$ingredientsList.show();
 		},
 		addOneIngredient: function(model){
-			this.$ingredientsList.append("<li><input type='checkbox' name='ingredient' class='addIngredientCheckbox' value="+ model.toJSON().name +">" + model.toJSON().name + "</li>");
+			this.$ingredientsList.append("<li><input type='checkbox' name='ingredient' class='addIngredientCheckbox' value='"+ model.attributes.name +"'>" + model.attributes.name + "</li>");
 		},
 		addAllIngredients: function () {
 			this.$ingredientsList.empty();

@@ -39,11 +39,11 @@ $(function(){
     oBote.clases.Concepto = Backbone.Model.extend({});
     
     oBote.clases.ListadoEvents = Backbone.Firebase.Collection.extend({
-        url: 'https://appachas.firebaseio.com/events',
+        url: 'https://bote.firebaseio.com/events',
         model: oBote.clases.Event
     });
     oBote.clases.ListadoUsers = Backbone.Firebase.Collection.extend({ 
-        url: 'https://appachas.firebaseio.com/users',
+        url: 'https://bote.firebaseio.com/users',
         model: oBote.clases.User
     });
     oBote.clases.ListadoConceptos = Backbone.Collection.extend({ 
@@ -76,7 +76,8 @@ $(function(){
             'click .logo': '_fLogo',
             'click .menu-link' : '_fMenuClick',
             'submit #formUsers': '_fFormUsersSubmit',
-            'submit #formActividad': '_fFormActividadSubmit'
+            'submit #formActividad': '_fFormActividadSubmit',
+            'click [href="#login"]': '_fLogin'
         },
         //se lanza siempre que hacemos una instancia
         initialize: function (){
@@ -133,7 +134,22 @@ $(function(){
                 name: $('[name=Nombre]').val(),
                 lastname: $('[name=Apellidos]').val()
             });
+        },
+        _fLogin: function(poEvent){
             
+            $('#login').slideToggle();
+            
+            var oRef = new Firebase("https://bote.firebaseio.com");
+                oRef.createUser({
+                  email    : "aaa@firebase.com",
+                  password : "correcthorsebatterystaple"
+                }, function(error, userData) {
+                  if (error) {
+                    console.log("Error creating user:", error);
+                } else {
+                    console.log("Successfully created user account with uid:", userData.uid);
+                }
+            });
         },
         // templates de mi app
         //_tHeaderTemplate: _.template($('#header-template').html()),

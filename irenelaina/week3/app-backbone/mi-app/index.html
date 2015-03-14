@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>APPachas</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/styles.css" type="text/css" />
 	</head>
 	
@@ -15,33 +16,48 @@
 	    			<ol class="menu-wrapper">
 	    				<li class="menu-item"><a class="menu-link" href="#inicio">Inicio</a></li>
 	    				<li class="menu-item"><a class="menu-link" href="#botes">Botes</a></li>
+	    				<li class="menu-item"><a class="menu-link" href="#login">Login</a></li>
 	    			</ol>
 	    		</nav>
 	        </header>
 	        
-	        <form id="formUsers">
+	        
+	        <div id="login">
+	        	<div class="form-group">
+		            <label for="txtEmail">Email address</label>
+		            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" />
+		        </div>
+		        <div class="form-group">
+		            <label for="txtPass">Password</label>
+		            <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" />
+		        </div>
+		        <button type="submit" class="btn btn-default btn-block">Login</button>
+	        </div>
+	        
+	        <form id="formUsers" class="form-inline">
 	        	<h2>Añadir Usuarios</h2>
-	        	<input type="text" name="Nombre" placeholder="Nombre" required/>
-	        	<input type="text" name="Apellidos" placeholder="Apellidos" required/>
-	        	<input type="submit" value="Submit"/>
+	        	<input type="text" name="Nombre" placeholder="Nombre" required class="form-control"/>
+	        	<input type="text" name="Apellidos" placeholder="Apellidos" required class="form-control"/>
+	        	<input type="submit" class="btn btn-default" value="Añadir" class="form-control"/>
 	        </form>
 	        
 	        
-	        <form id="formActividad">
+	        <form id="formActividad" class="form-inline">
 	        	<h2>Añadir Actividad</h2>
-	        	<input type="text" name="Concepto" placeholder="Concepto"/>
-	        	<input type="text" name="Cantidad" placeholder="Cantidad" required/>
-	        	<input type="text" name="Fecha" placeholder="Fecha" required/>
-	        	<input type="submit" value="Submit"/>
+	        	<input type="text" name="Concepto" placeholder="Concepto" class="form-control" />
+	        	<input type="text" name="Cantidad" placeholder="Cantidad" required class="form-control" />
+	        	<input type="text" name="Fecha" placeholder="Fecha" required class="form-control"/>
+	        	<input type="submit" class="btn btn-default" value="Añadir" class="form-control"/>
 	        </form>
 	        
 	        
 	         <ol id="users-list"></ol>
 	       
+	       	 <footer class="page-footer"></footer>
 	       
 	    </section>
 	    
-	    <footer class="page-footer"></footer>
+
 	    
 	    
 	    
@@ -70,6 +86,7 @@
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
 		<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="//cdn.firebase.com/js/client/2.0.3/firebase.js"></script>
 		<script type="text/javascript" src="//cdn.firebase.com/libs/backbonefire/0.5.1/backbonefire.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
