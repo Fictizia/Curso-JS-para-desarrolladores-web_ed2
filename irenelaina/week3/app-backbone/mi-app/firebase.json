@@ -1,9 +1,0 @@
-{
-  "firebase": "backbone-app",
-  "public": ".",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
-}
