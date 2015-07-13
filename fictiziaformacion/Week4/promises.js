@@ -30,4 +30,7 @@ var doSomethingCoolWithDirections = function( route ) {
 $.when( geocode( fromAddress ), geocode( toAddress ) ).
     then(function( fromLatLng, toLatLng ) {
         getRoute( fromLatLng, toLatLng ).then( doSomethingCoolWithDirections );
+    }, function () {
+        // avisar de que ha ido mal
+        // ...
     });

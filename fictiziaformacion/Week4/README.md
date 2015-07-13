@@ -25,6 +25,7 @@ Week 4 Milestone
 
 * Take a look at `callbacks.js` for code explanation.
 * [Be careful and prevent callback hell](http://callbackhell.com/).
+* [JavaScript Promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
 ## Event Driven Design & Async
 
