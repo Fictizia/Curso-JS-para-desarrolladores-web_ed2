@@ -1,9 +1,0 @@
-{
-  "firebase": "iconfund",
-  "public": ".",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ]
-}
