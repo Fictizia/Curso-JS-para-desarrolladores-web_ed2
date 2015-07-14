@@ -1,14 +1,14 @@
 // Prototypal pattern
-Klass1 = function () {}
+var Klass1 = function () {};
 Klass1.prototype.funcionExterna1 = function () {
   console.log('foo');
-}
+};
 Klass1.prototype.funcionExterna2 = function () {
   console.log('bar');
-}
+};
 
 // Module pattern
-Klass2 = function () {
+var Klass2 = function () {
   var _funcionInterna1 = function () {
       console.log('foo');
   },
@@ -32,7 +32,7 @@ var funcionPublica2 = function () {
   console.log('bar');
 };
 
-Klass3 = function () {
+var Klass3 = function () {
   return {
       funcionExterna1: funcionPublica1,
       funcionExterna2: funcionPublica2
