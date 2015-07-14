@@ -23,6 +23,8 @@ Persona.prototype.saludar = function () {
 };
 Persona.prototype.puntuar = function (pPuntos) {
     this.puntuacion += pPuntos;
+    
+    console.log(this.datosPersonales.nombre + ' tiene ' + this.puntuacion + ' puntos.');
 };
 
 // librería de funciones
@@ -36,9 +38,11 @@ function crearPersona (pNombre, pApellidos, pEdad) {
     nuevaPersona.datosPersonales.edad = pEdad;
     
     gPersonas.push(nuevaPersona);
+    console.log('Persona creada', gPersonas[gPersonas.length -1]);
 }
 
 // asignar equipo a la persona
 function elegirEquipo (pPersona, pEquipo) {
     pPersona.equipo = pEquipo;
+    console.log(pPersona.datosPersonales.nombre + ' ha elegido el equipo ' + pEquipo);
 }
