@@ -13,6 +13,8 @@ var replaceThing = function() {
     theThing = {
         longStr: (++cnt) + '_' + (new Array(1000000).join('*')),
         someMethod: function() { // if not nulled, original thing is now attached to someMethod -> <function scope> -> Closure
+            var someMessage = 'some message';
+            
             console.log(someMessage);
         }
     };
