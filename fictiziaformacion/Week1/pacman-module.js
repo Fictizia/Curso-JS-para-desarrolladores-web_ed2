@@ -8,7 +8,7 @@ var Persona = function FichaPersona (pNombre, pApellidos) {
     
     return nuevaPersona;
 };
-
+// constructor de modulo con funciones en cache:
 var Monigote = function DibujoMonigote (pTipo, pColor) {
     var nuevoMonigote = document.createElement('div'),
         imagenDeFondo = '';
@@ -24,8 +24,15 @@ var Monigote = function DibujoMonigote (pTipo, pColor) {
     nuevoMonigote.style.backgroundImage = 'url(' + imagenDeFondo + ')';
     nuevoMonigote.style.width = '50px';
     nuevoMonigote.style.height = '50px';
+    nuevoMonigote.mover = moverMonigote;
     
     document.getElementById('casillaDeSalida-' + pTipo).appendChild(nuevoMonigote);
     
     return nuevoMonigote;
 };
+
+// libreria de funciones
+function moverMonigote (pX, pY) {
+    this.style.top = pY + 'px';
+    this.style.left = pX + 'px';
+}

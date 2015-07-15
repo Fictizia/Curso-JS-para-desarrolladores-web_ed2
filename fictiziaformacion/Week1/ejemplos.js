@@ -25,3 +25,6 @@ function calcularIVA (piTipo, pcNombre) {
 calcularIVA(16, 'libros', 5, 'medicinas');
 
 //$('.input').on('click', function input_onClick(){/**/});
+
+var $$ = document.querySelectorAll.bind(document),
+    $ = document.querySelector.bind(document);
