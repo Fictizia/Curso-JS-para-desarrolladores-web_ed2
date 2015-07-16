@@ -11,7 +11,7 @@ var miListaDeFotos = [
 
 function crearGaleria () {
     var miGaleria = document.querySelector('.galeria'),
-        miFragmento = new DocumentFragment(),
+        miFragmento = document.createDocumentFragment(),// o new DocumentFragment()
         miLI, miIMG;
     
     for (var indice = 0; indice < miListaDeFotos.length; indice++) {
