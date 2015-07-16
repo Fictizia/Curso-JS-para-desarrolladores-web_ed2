@@ -38,3 +38,21 @@ EventTarget.prototype.addEventListener = function(type, fn, capture) {
   // store global event listeners
   window.eventListeners.push([type, fn, capture]);
 }
+
+// StopPropagation
+
+function body_onClick2(event){
+    console.log(event.target);
+    event.stopPropagation();
+}
+
+document.body.addEventListener('click', body_onClick2);
+
+// PreventDefault
+
+function a_onClick(event){
+    console.log(event.target.href);
+    event.preventDefault();
+}
+
+document.querySelector('a.logo').addEventListener('click', a_onClick);
