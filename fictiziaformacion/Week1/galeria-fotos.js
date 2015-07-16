@@ -11,10 +11,11 @@ var miListaDeFotos = [
 
 function crearGaleria () {
     var miGaleria = document.querySelector('.galeria'),
+        miFragmento = new DocumentFragment(),
         miLI, miIMG;
     
     for (var indice = 0; indice < miListaDeFotos.length; indice++) {
-        miLI = document.createElement('li');
+        miLI = miFragmento.createElement('li');
         
         if (miListaDeFotos[indice].indexOf('paisajes') >= 0) {
             miLI.className = 'paisaje';
@@ -22,14 +23,15 @@ function crearGaleria () {
             miLI.className = 'retrato';
         }
         
-        miIMG = document.createElement('img');
+        miIMG = miFragmento.createElement('img');
         
         miIMG.src = miListaDeFotos[indice];
         
         miLI.appendChild(miIMG);
         
-        miGaleria.appendChild(miLI);
+        miFragmento.appendChild(miLI);
     }
+    miGaleria.appendChild(miFragmento);
 }
 
 crearGaleria ();
