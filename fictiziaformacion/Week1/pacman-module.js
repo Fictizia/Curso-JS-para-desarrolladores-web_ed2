@@ -25,6 +25,7 @@ var Monigote = function DibujoMonigote (pTipo, pColor) {
     nuevoMonigote.style.width = '50px';
     nuevoMonigote.style.height = '50px';
     nuevoMonigote.mover = moverMonigote;
+    nuevoMonigote.moverAlInicio = moverMonigote.bind(this, 0, 0);
     
     document.getElementById('casillaDeSalida-' + pTipo).appendChild(nuevoMonigote);
     
@@ -36,17 +37,3 @@ function moverMonigote (pX, pY) {
     this.style.top = pY + 'px';
     this.style.left = pX + 'px';
 }
-
-// call, bind & apply
-var miOtroObjeto = document.getElementById('otraEtiqueta'),
-    miX = 100,
-    miY = 200;
-
-moverMonigote.call(miOtroObjeto, miX, miY);
-moverMonigote.apply(miOtroObjeto, [miX, miY]);
-
-var pacmanRosa = new Monigote('pacman', 'rosa');
-
-var iniciarPosicionPacmanRosa = pacmanRosa.mover.bind(pacmanRosa, 0, 0);
-
-iniciarPosicionPacmanRosa();
