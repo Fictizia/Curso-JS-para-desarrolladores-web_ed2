@@ -1,0 +1,66 @@
+// Convert Degress to Radians
+function Deg2Rad( deg ) {
+   return deg * Math.PI / 180;
+}
+
+// Get Distance between two lat/lng points using the Haversine function
+// First published by Roger Sinnott in Sky & Telescope magazine in 1984 (“Virtues of the Haversine”)
+//
+function Haversine( lat1, lon1, lat2, lon2 )
+{
+	var R = 6372.8; // Earth Radius in Kilometers
+
+	var dLat = Deg2Rad(lat2-lat1);  
+	var dLon = Deg2Rad(lon2-lon1);  
+	var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+					Math.cos(Deg2Rad(lat1)) * Math.cos(Deg2Rad(lat2)) * 
+					Math.sin(dLon/2) * Math.sin(dLon/2);  
+	var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	var d = R * c; 
+	
+	// Return Distance in Kilometers
+	return d;
+}
+
+//(Faster) Distance Approximation Calculator for short distances, 
+// Uses Pythagoras Theorem (a = sqrt( (b*b) + (c*c))) on an Equirectangular projection (to account for
+// curvature in longitude lines towards the poles).
+// Good for distances generally less than 20km
+function PythagorasEquirectangular( lat1, lon1, lat2, lon2 )
+{
+	lat1 = Deg2Rad(lat1);
+	lat2 = Deg2Rad(lat2);
+	lon1 = Deg2Rad(lon1);
+	lon2 = Deg2Rad(lon2);
+	var R = 6371; // km
+	var x = (lon2-lon1) * Math.cos((lat1+lat2)/2);
+	var y = (lat2-lat1);
+	var d = Math.sqrt(x*x + y*y) * R;
+	
+	// Return Distance in Kilometers
+	return d;
+}
+
+-----------------------------------
+
+<?php
+// Get Distance between two lat/lng points using the Haversine function
+// First published by Roger Sinnott in Sky & Telescope magazine in 1984 (“Virtues of the Haversine”)
+//
+function Haversine( $lat1, $lon1, $lat2, $lon2) 
+{
+    $R = 6372.8;	// Radius of the Earth in Km
+
+	// Convert degress to radians and get the distance between the latitude and longitude pairs
+    $dLat = deg2rad($lat2 - $lat1);
+    $dLon = deg2rad($lon2 - $lon1);
+
+	// Calculate the angle between the points
+    $a = sin($dLat/2) * sin($dLat/2) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * sin($dLon/2) * sin($dLon/2);
+    $c = 2 * asin(sqrt($a));
+    $d = $R * $c;
+
+	// Distance in Kilometers
+    return $d;
+}
+?>

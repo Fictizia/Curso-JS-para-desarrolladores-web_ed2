@@ -1,0 +1,23 @@
+{
+  "name": "app backbone",
+  "version": "0.0.0",
+  "homepage": "https://github.com/fictiziaformacion/js-web-developers",
+  "authors": [
+    "virgi1974 <virgifp@yahoo.es>"
+  ],
+  "description": "proyecto",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.1",
+    "jquery": "~2.0.0",
+    "modernizr": "~2.8.3"
+  }
+}
