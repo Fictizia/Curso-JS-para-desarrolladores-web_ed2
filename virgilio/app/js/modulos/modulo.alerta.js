@@ -1,12 +1,12 @@
 /*globals require*/
 'use strict';
 
-define(['backbone'],function(Backbone){ //hay que pasar Backbone como parametro para poder usarla dentro  
+define(['backbone','jquery'],function(Backbone,Jquery){ //hay que pasar Backbone como parametro para poder usarla dentro  
 ////mayusculas-minusculas importante!!!!!!!!!!!!!!!!!!!!!!!!
     
-    var modulo = {};
+    var modulo2 = {};
     
-    modulo.crearCalendario = function(pEtiqueta,pFormato){
+    modulo2.cambiaTexto = function(pEtiqueta){
         var AppView = {};//ahora declaramos una nueva appview en el modulo
         AppView = Backbone.View.extend({
             
@@ -15,10 +15,13 @@ define(['backbone'],function(Backbone){ //hay que pasar Backbone como parametro 
                 'click p' : 'p_onClick'
             },
             p_onClick : function(pEvent){
-                console.log('hiciste click');
+                //console.log('hiciste click');
+                //alert('hiciste click');
+                Jquery(pEtiqueta).text('aqui estamos');
+                Jquery(pEtiqueta).css('background-color','red');
             }
         });
         return new AppView;
     };
-    return modulo;
+    return modulo2; //me devuelve un objeto
 });

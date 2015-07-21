@@ -24,18 +24,30 @@ require.config({
 	}
 });
 
+/*
 requirejs(['jquery', 'modulos/modulo.calendario'], function ($, calendario) {
     
     var miApp ={};
     
     
+    
    miApp = calendario.crearCalendario($('#miCalendario'),'mes');
     
+    //miApp = new AppView;
+});
+
+*/
+
+
+
+requirejs(['jquery', 'modulos/modulo.alerta'], function ($, alertas) {
+    
+    var miApp2 ={};
     
     
+   miApp2 = alertas.cambiaTexto($('#misAlert'));
+   //miApp2 = alertas.cambiaTexto($('p'));  NO FUNCIONA!!!!
     
     
-    
-    
-    miApp = new AppView;
+    //miApp = new AppView;
 });
