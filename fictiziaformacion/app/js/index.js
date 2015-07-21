@@ -1,5 +1,5 @@
 /* globals requirejs */
-
+'use strict';
 // Require.js allows us to configure shortcut alias
 require.config({
 	// The shim config allows us to configure dependencies for
@@ -28,7 +28,6 @@ requirejs(['jquery', 'modulos/modulo.calendario'], function($, calendario) {
     var miApp = {};
     
     $('html').removeClass('no-js').addClass('js');
-    //pModuloElTiempo.traerInformacionDelTiempo();
     
     miApp = calendario.crearCalendario($('#miCalendario'), 'mes');
     

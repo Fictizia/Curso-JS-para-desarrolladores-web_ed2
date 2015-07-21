@@ -1,7 +1,10 @@
+'use strict';
+
 define(['backbone'], function (Backbone) {
     var modulo = {};
     
     // factoria de objetos
+    // OPTIMIZAR!!
     modulo.crearCalendario = function (pEtiqueta, pFormato) {
         var AppView = {};
         
