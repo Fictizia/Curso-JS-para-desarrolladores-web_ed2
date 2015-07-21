@@ -28,10 +28,10 @@ requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], funct
     // aqui va el js de mi index.html
     var miApp = {};
     
-    console.log(pJSON);
+    console.log(JSON.parse(pJSON));
     
     $('html').removeClass('no-js').addClass('js');
     
-    miApp = calendario.crearCalendario($('#miCalendario'), 'mes');
+    miApp = calendario.crearCalendario($('#miCalendario'), JSON.parse(pJSON));
     
 });

@@ -1,3 +1,17 @@
-{
-    'prueba': 'ok'
+{  
+   "meses":[  
+      "enero",
+      "febrero",
+      "marzo",
+      "abril",
+      "mayo",
+      "abril",
+      "junio",
+      "julio",
+      "agosto",
+      "septiembre",
+      "octubre",
+      "noviembre",
+      "diciembre"
+   ]
 }
