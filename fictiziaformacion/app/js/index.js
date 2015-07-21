@@ -19,13 +19,16 @@ require.config({
 	paths: {
 	    jquery: '../bower_components/jquery/jquery',
 		underscore: '../bower_components/underscore/underscore',
-		backbone: '../bower_components/backbone/backbone'
+		backbone: '../bower_components/backbone/backbone',
+		text: '../bower_components/requirejs-text/text'
 	}
 });
 
-requirejs(['jquery', 'modulos/modulo.calendario'], function($, calendario) {
+requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], function($, calendario, pJSON) {
     // aqui va el js de mi index.html
     var miApp = {};
+    
+    console.log(pJSON);
     
     $('html').removeClass('no-js').addClass('js');
     

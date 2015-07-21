@@ -102,6 +102,10 @@ html.no-js #mostrarSiNoTieneJS {
     display: block;
 }
 
+#miCalendario {
+    border: 10px solid black;
+    padding: 30px;
+}
 
 
 

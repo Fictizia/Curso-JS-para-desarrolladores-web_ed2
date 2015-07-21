@@ -1,27 +1,43 @@
 'use strict';
 
-define(['backbone'], function (Backbone) {
+define(['backbone', 'underscore', 'text!templates/calendario.html'], function (Backbone, _, pCalendarioHtml) {
     var modulo = {};
     
-    // factoria de objetos
-    // OPTIMIZAR!!
-    modulo.crearCalendario = function (pEtiqueta, pFormato) {
-        var AppView = {};
+    modulo.crearCalendario = _crearCalendario.bind(modulo, Backbone, _, pCalendarioHtml);
+    
+    return modulo;
+    
+    // libreria de funciones privadas
+    // - factoria de objetos
+    function _crearCalendario (Backbone, _, pCalendarioHtml, pEtiqueta, pFormato) {
+        var AppView = {},
+            instancia = {},
+            misDatos = {
+                nombre: 'Alvaro',
+                meses: ['enero', 'febrero', 'marzo']
+            },
+            miTemplate = _.template(pCalendarioHtml);
         
         // si el parametro pFormato fuera 'mes' haria ...
         // si fuera 'semana' haria ...
         AppView = Backbone.View.extend({
             el: pEtiqueta,
+            initialize: function appView_initialize () {
+                console.log('instancia ok', navigator.language, this.el);
+                this.idioma = navigator.language;
+                this.el.querySelector('#cabecera').innerHTML = miTemplate(misDatos);
+            },
             events: {
                 'click p': 'p_onClick'// similar a $('#miApp p').on('click', p_onClick)
             },
             p_onClick: function (pEvent) {
-                console.log('hiciste click en un P');
+                // el "this" dentro de un evento en una clase de Backbone cambia a la instancia de la clase AppView
+                console.log('hiciste click en un P', pEvent.target);
             }
         });
         
-        return new AppView;
-    };
-    
-    return modulo;
+        instancia = new AppView;
+        
+        return instancia;
+    }
 });
