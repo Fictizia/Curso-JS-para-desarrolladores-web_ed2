@@ -142,6 +142,11 @@ html.no-js #mostrarSiNoTieneJS {
 #miCalendario .calendario ol li:hover {
     background-color: #ffc;
 }
+#miCalendario .calendario ol li.titulo {
+    font-size: 1.2em;
+    background-color: #444;
+    color: #fff;
+}
 
 
 
