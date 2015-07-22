@@ -24,7 +24,7 @@ require.config({
 	}
 });
 
-requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], function($, calendario, pJSON) {
+requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json', 'text!json/alcobendas.json'], function($, calendario, pJSON, alcobendas) {
     // aqui va el js de mi index.html
     var miApp = {};
     
@@ -32,6 +32,6 @@ requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], funct
     
     $('html').removeClass('no-js').addClass('js');
     
-    miApp = calendario.crearCalendario($('#miCalendario'), JSON.parse(pJSON));
+    miApp = calendario.crearCalendario($('#miCalendario'), JSON.parse(pJSON), JSON.parse(alcobendas));
     
 });

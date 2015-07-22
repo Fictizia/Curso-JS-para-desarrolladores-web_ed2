@@ -9,12 +9,13 @@ define(['backbone', 'underscore', 'text!templates/calendario.html'], function (B
     
     // libreria de funciones privadas
     // - factoria de objetos
-    function _crearCalendario (Backbone, _, pCalendarioHtml, pEtiqueta, pJSON) {
+    function _crearCalendario (Backbone, _, pCalendarioHtml, pEtiqueta, pJSON, alcobendas) {
         var AppView = {},
             instancia = {},
             misDatos = {
                 nombre: 'Alvaro',
-                meses: pJSON.meses
+                meses: pJSON.meses,
+                alcobendas: alcobendas
             },
             miTemplate = _.template(pCalendarioHtml);
         
