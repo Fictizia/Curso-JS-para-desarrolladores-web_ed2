@@ -24,14 +24,18 @@ require.config({
 	}
 });
 
-requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json', 'text!json/alcobendas.json'], function($, calendario, pJSON, alcobendas) {
+requirejs([
+	'jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], function($, calendario, pJSON) {
     // aqui va el js de mi index.html
-    var miApp = {};
+    var miCalendario = {},
+    	etiquetaCalendario = $('#miCalendario');
     
-    console.log(JSON.parse(pJSON));
+    //console.log(JSON.parse(pJSON));
     
     $('html').removeClass('no-js').addClass('js');
     
-    miApp = calendario.crearCalendario($('#miCalendario'), JSON.parse(pJSON), JSON.parse(alcobendas));
+    miCalendario = calendario.crearCalendario(etiquetaCalendario, JSON.parse(pJSON));
     
+    // aqui iria la creacion de mi app de agenda
+    // ...
 });

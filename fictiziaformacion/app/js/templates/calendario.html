@@ -1,8 +1,21 @@
-<h1>Mi Calendario, hola <%= nombre %></h1>
-<ul>
-    <% for (var i = 0; i < meses.length; i++) {%>
-    <li><%= meses[i] %></li>
-    <%} %>
-</ul>
-
-<p><%=alcobendas[0]%></p>
+<div class="cabecera clearfix">
+    <h1>Hola <%= nombre %>, este es tu calendario</h1>
+    <form>
+        <select id="mes">
+            <option selected>Elige un mes</option>
+            <% for (var i = 0; i < meses.length; i++) {%>
+            <option value="<%=i %>"><%= meses[i] %></option>
+            <% } %>
+        </select>
+    </form>
+</div>
+<% if (mesElegido !== null) { %>
+<div class="calendario clearfix">
+    <h2>Has elegido el mes de <%=meses[mesElegido] %></h2>
+    <ol>
+        <% for (var i = 0; i < diasDelMesElegido; i++) { %>
+            <li><%= i + 1 %></li>
+        <% } %>
+    </ol>
+</div>
+<% } %>
