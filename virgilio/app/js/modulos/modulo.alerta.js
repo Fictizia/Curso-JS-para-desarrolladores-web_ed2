@@ -17,8 +17,9 @@ define(['backbone','jquery'],function(Backbone,Jquery){ //hay que pasar Backbone
             p_onClick : function(pEvent){
                 //console.log('hiciste click');
                 //alert('hiciste click');
-                Jquery(pEtiqueta).text('aqui estamos');
-                Jquery(pEtiqueta).css('background-color','red');
+                Jquery(pEvent.target).text('aqui estamos'); //CON THIS NO FUNCIONA PORQUE HARIA REFERENCIA A APPVIEW
+                //pEvent.target para hacer referencia a cada p individualmente
+                //Jquery(pEtiqueta).css('background-color','red');
             }
         });
         return new AppView;
