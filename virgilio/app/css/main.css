@@ -96,6 +96,79 @@ textarea {
    ========================================================================== */
 
 
+#mostrarSiNoTieneJS {
+    display: none;
+}
+html.no-js #mostrarSiNoTieneJS {
+    display: block;
+}
+
+#miCalendario {
+    box-sizing: border-box;
+    border: 10px solid black;
+    padding: 30px;
+    width: 822px;
+    margin: 50px auto;
+}
+
+#miCalendario form {
+    color: red;
+    float: right;
+    margin-top: -56px;
+}
+
+#miCalendario .calendario {
+    border: 1px solid #444;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+#miCalendario .calendario ol {
+    margin: 0;
+    padding: 0;
+    width: 700px;
+    list-style-type: none;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+#miCalendario .calendario ol li {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    float: left;
+    font-size: 2em;
+    font-weight: bold;
+    line-height: 100px;
+    width: 100px;
+    cursor: pointer;
+}
+
+
+#miCalendario .calendario ol li:hover {
+    background-color: #ffc;
+}
+#miCalendario .calendario ol li.titulo {
+    font-size: 1.2em;
+    background-color: #444;
+    color: #fff;
+}
+
 
 
 
