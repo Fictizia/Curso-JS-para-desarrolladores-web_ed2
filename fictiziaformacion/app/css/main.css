@@ -102,7 +102,8 @@ html.no-js #mostrarSiNoTieneJS {
     display: block;
 }
 
-#miCalendario {
+#miCalendario,
+#misUsuarios {
     box-sizing: border-box;
     border: 10px solid black;
     padding: 30px;
@@ -138,6 +139,7 @@ html.no-js #mostrarSiNoTieneJS {
     line-height: 100px;
     width: 100px;
     cursor: pointer;
+    position: relative;
 }
 #miCalendario .calendario ol li:hover {
     background-color: #ffc;
@@ -147,7 +149,17 @@ html.no-js #mostrarSiNoTieneJS {
     background-color: #444;
     color: #fff;
 }
-
+#miCalendario .calendario .cita {
+    font-size: 12px;
+    border: 1px solid blue;
+    color: #444;
+    border-radius: 2px;
+    position: absolute;
+    bottom: 2px;
+    line-height: 14px;
+    left: 2px;
+    right: 2px;
+}
 
 
 

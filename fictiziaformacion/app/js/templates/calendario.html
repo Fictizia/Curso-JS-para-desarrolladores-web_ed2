@@ -21,7 +21,11 @@
         <li class="titulo">Sábado</li>
         <li class="titulo">Domingo</li>
         <% for (var i = 0; i < diasDelMesElegido; i++) { %>
-            <li><%= i + 1 %></li>
+            <li class="dia" 
+                data-day="<%= i + 1 %>"
+                data-month="<%= Number(mesElegido) + 1 %>"
+                data-year="2015"
+                ><%= i + 1 %></li>
         <% } %>
     </ol>
 </div>
