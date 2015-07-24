@@ -1,8 +1,10 @@
 'use strict';
 
 // recibe la inyeccion de Backbone, underscore y el template de la lista de usuarios
-define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Backbone, _, pUsuariosHtml) {
+define(['backbone', 'underscore', 'firebase', 'backbonefire', 'text!templates/usuarios.html'], function (Backbone, _, Firebase, Backbonefire, pUsuariosHtml) {
     var modulo = {};// creamos la variable modulo que llegara a index.js
+    
+    console.log(Backbone.Firebase);
     
     // creamos la funcion publica que sera accesible desde fuera
     // con los parametros preconfigurados Backbone, _ y la plantilla pUsuariosHtml
@@ -19,9 +21,24 @@ define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Bac
             miApp = {},// instancia de la vista de la aplicación
             misUsuarios = {},// instancia de la colección de modelos de usuarios
             miTemplate = _.template(pUsuariosHtml);// template de la vista de la aplicación
-            
+        
+        // prueba: modelo enlazado con BBDD firebase
+        var ModeloPrueba = Backbone.Firebase.Model.extend({
+            url: 'https://js-web-developers.firebaseio.com/prueba'
+        });
+        // creo la nueva instancia del modelo
+        var nuevaPrueba = new ModeloPrueba(),
+            nuevaFecha = new Date();
+        // actualizo los datos, forzando que se guarde en BBDD
+        nuevaPrueba.set({
+            porejemplo: 'esto',
+            otracosa: 19998,
+            fecha: nuevaFecha.getTime(), 
+            html: pUsuariosHtml
+        });
+        
         // clase del modelo de datos de un usuario
-        UserModel = Backbone.Model.extend({
+        UserModel = Backbone.Firebase.Model.extend({
             defaults: {
                 nombre: '',
                 apellidos: ''
@@ -41,8 +58,9 @@ define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Bac
         });
         // clase de la colección de modelos de usuarios
         // la colección se encarga de gestionar los modelos
-        UsersCollection = Backbone.Collection.extend({
-            model: UserModel
+        UsersCollection = Backbone.Firebase.Collection.extend({
+            model: UserModel,
+            url: 'https://js-web-developers.firebaseio.com/usuarios'
         });
         // instancia de la colección de modelos de usuarios
         misUsuarios = new UsersCollection;
@@ -81,5 +99,6 @@ define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Bac
         });
         
         //console.log('crear lista de usuarios', pUsuariosHtml, pEtiqueta, pJSON);
+        return miApp;
     }
 });
