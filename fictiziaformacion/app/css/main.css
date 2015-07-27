@@ -160,8 +160,18 @@ html.no-js #mostrarSiNoTieneJS {
     left: 2px;
     right: 2px;
 }
-
-
+#misUsuarios .listaUsuarios {
+    margin-bottom: 20px;
+}
+#misUsuarios .usuario {
+    list-style-type: none;
+    margin: 10px 5px;
+    border-bottom: 2px solid #444;
+}
+#misUsuarios .botonera {
+    float: right;
+    margin-top: -23px;
+}
 
 
 
