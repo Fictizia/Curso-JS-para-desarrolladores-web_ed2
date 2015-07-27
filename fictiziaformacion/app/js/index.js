@@ -20,7 +20,7 @@ require.config({
 	    jquery: '../bower_components/jquery/jquery',
 		underscore: '../bower_components/underscore/underscore',
 		backbone: '../bower_components/backbone/backbone',
-        localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
+        //localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
 		text: '../bower_components/requirejs-text/text'
 	}
 });

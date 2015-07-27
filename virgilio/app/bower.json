@@ -21,6 +21,11 @@
     "modernizr": "~2.8.3",
     "requirejs": "~2.1.19",
     "requirejs-text": "~2.0.14",
+    "underscore": "~1.8.3",
+    "backbonefire": "~0.5.1"
+  },
+  "resolutions": {
+    "backbone": "~1.2.1",
     "underscore": "~1.8.3"
   }
 }

@@ -99,15 +99,22 @@ define(['backbone', 'underscore', 'text!templates/calendario.html'], function (B
                 console.log('instancia ok', navigator.language, this.el);
                 this.idioma = navigator.language;
                 this.el.innerHTML = miTemplate(misDatos); //lo que coloco en #miCalendario es el contenido de mi plantilla
+                this.listenTo(this.collection,'add',this.nuevaCita);
             },
             render:function appView_render(){ 
                 //console.log('render'); comprobacion para ver si se llamaba correctamente a la funcion
                  this.el.innerHTML = miTemplate(misDatos); //aunque con "initialize" me pinta
                  return this;
             },
+            //las funciones de listento a this.collection
+            //siempre reciben el modelo recien creado
+            nuevaCita:function(pModel){
+                console.log("has creado un nuevo modelo");
+            },
             events: {
                 'change #mes':'mes_onChange', //añadimos el evento que salta al cambiar #mes
-                'click p': 'p_onClick'// similar a $('#miApp p').on('click', p_onClick)
+                'click p': 'p_onClick',// similar a $('#miApp p').on('click', p_onClick)
+                'click .dia':'dia_onClick'
             },
             
             //ahora definimos las funciones que se disparan con esos eventos
@@ -119,12 +126,32 @@ define(['backbone', 'underscore', 'text!templates/calendario.html'], function (B
                 //del array "diasPorMes" en pJSON
                 this.render(); //llamamos a la funcion "render"
             },
+            dia_onClick: function(pEvent){
+                var cita="";
+                cita = window.prompt("pon nombre a tu cita");
+                if(cita !==null){
+                    
+                 console.log("nueva cita " + pEvent.target.dataset.day +" "+ pEvent.target.dataset.month +" "+ pEvent.target.dataset.year +" "+ cita);   
+                 this.collection.add({
+                     dia:pEvent.target.dataset.day,
+                     mes:pEvent.target.dataset.mes,
+                     anyo:pEvent.target.dataset.anyo,
+                     agenda:cita
+                 })
+                }
+                
+               //console.log(pEvent.target.dataset.day,pEvent.target.dataset.month,pEvent.target.dataset.year);
+               
+            },
             p_onClick: function (pEvent) { //pasamos el evento 
                 
                 // el "this" dentro de un evento en una clase de Backbone cambia a la instancia de la clase AppView
                 console.log('hiciste click en un P', pEvent.target);
             }
         });
+         
+         
+         
          
         miApp = new AppView({ //creamos instancia que guarda AppView
             collection:misDias //coleccion que va a usar
