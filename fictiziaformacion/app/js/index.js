@@ -14,25 +14,14 @@ require.config({
 				'jquery'
 			],
 			exports: 'Backbone'
-		},
-		backbonefire: {
-			deps: [
-				'underscore',
-				'backbone'
-			],
-			exports: 'Backbonefire'
-		},
-		firebase: {
-			exports: 'Firebase'
 		}
 	},
 	paths: {
 	    jquery: '../bower_components/jquery/jquery',
 		underscore: '../bower_components/underscore/underscore',
 		backbone: '../bower_components/backbone/backbone',
-		text: '../bower_components/requirejs-text/text',
-		firebase: '../bower_components/firebase/firebase',
-		backbonefire: '../bower_components/backbonefire/dist/backbonefire'
+        //localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
+		text: '../bower_components/requirejs-text/text'
 	}
 });
 // importante: inyectar los modulos que vayamos a usar, y los origenes de datos (JSON)
@@ -51,5 +40,4 @@ requirejs(['jquery', 'modulos/modulo.calendario', 'modulos/modulo.usuarios', 'te
     
     // aqui iria la creacion de mi app lista de usuarios
     misUsuarios = usuarios.crearListaUsuarios(etiquetaUsuarios, JSON.parse(pBBDD));
-    window.misUsuarios = misUsuarios;
 });

@@ -1,7 +1,7 @@
 'use strict';
 
 // recibe la inyeccion de Backbone, underscore y el template de la lista de usuarios
-define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Backbone, _, pUsuariosHtml) {
+define(['backbone', 'underscore', 'firebase','backbonefire','text!templates/usuarios.html'], function (Backbone, _,Firebase,Backbonefire, pUsuariosHtml) {
     var modulo = {};// creamos la variable modulo que llegara a index.js
     
     // creamos la funcion publica que sera accesible desde fuera
@@ -41,7 +41,8 @@ define(['backbone', 'underscore', 'text!templates/usuarios.html'], function (Bac
         });
         // clase de la colección de modelos de usuarios
         // la colección se encarga de gestionar los modelos
-        UsersCollection = Backbone.Collection.extend({
+        UsersCollection = Backbone.Firebase.Collection.extend({
+            url:'https://blistering-fire-3711.firebaseio.com/usuarios',
             model: UserModel
         });
         // instancia de la colección de modelos de usuarios

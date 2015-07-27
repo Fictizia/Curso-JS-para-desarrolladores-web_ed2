@@ -14,25 +14,42 @@ require.config({
 				'jquery'
 			],
 			exports: 'Backbone'
+		},
+		backbonefire:{
+			deps: [
+				'underscore',
+				'backbone'
+			],
+			exports: 'Backbonefire'
+		},
+		firebase:{
+			exports: 'Firebase'
 		}
 	},
 	paths: {
 	    jquery: '../bower_components/jquery/jquery',
 		underscore: '../bower_components/underscore/underscore',
 		backbone: '../bower_components/backbone/backbone',
-		text: '../bower_components/requirejs-text/text'
+        //localstorage: '../bower_components/backbone.localStorage/backbone.localStorage',
+		text: '../bower_components/requirejs-text/text',
+		backbonefire:'../bower_components/backbonefire/dist/backbonefire',
+		firebase:'../bower_components/firebase/firebase'
 	}
 });
-
-requirejs(['jquery', 'modulos/modulo.calendario', 'text!json/datos.json'], function($, calendario, pJSON) {
+// importante: inyectar los modulos que vayamos a usar, y los origenes de datos (JSON)
+requirejs(['jquery', 'modulos/modulo.calendario', 'modulos/modulo.usuarios', 'text!json/datos.json', 'text!json/BBDD.usuarios.json'], 
+	function($, calendario, usuarios, pJSON, pBBDD) {
     // aqui va el js de mi index.html
-    var miApp = {};
-    
-    //console.log(JSON.parse(pJSON));
+    var miCalendario = {},
+    	misUsuarios = {},
+    	etiquetaCalendario = $('#miCalendario'),
+    	etiquetaUsuarios = $('#misUsuarios');
     
     $('html').removeClass('no-js').addClass('js');
     
-    // "calendario" es el miApp devuelto por modulo.calendario.js
-    miApp = calendario.crearCalendario($('#miCalendario'), JSON.parse(pJSON));
+    // creacion de la instancia de la app de calendario
+    miCalendario = calendario.crearCalendario(etiquetaCalendario, JSON.parse(pJSON));
     
+    // aqui iria la creacion de mi app lista de usuarios
+    misUsuarios = usuarios.crearListaUsuarios(etiquetaUsuarios, JSON.parse(pBBDD));
 });

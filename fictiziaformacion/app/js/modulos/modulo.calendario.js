@@ -1,6 +1,6 @@
 'use strict';
 
-define(['backbone', 'underscore', 'text!templates/calendario.html'], function (Backbone, _, pCalendarioHtml) {
+define(['backbone', 'underscore', 'localstorage', 'text!templates/calendario.html'], function (Backbone, _, localstorage, pCalendarioHtml) {
     var modulo = {};
     
     modulo.crearCalendario = _crearCalendario.bind(modulo, Backbone, _, pCalendarioHtml);
@@ -36,7 +36,8 @@ define(['backbone', 'underscore', 'text!templates/calendario.html'], function (B
         
         // defino mi coleccion de modelos
         DaysCollection = Backbone.Collection.extend({
-            model: DayModel
+            model: DayModel,
+            //localStorage: new Backbone.LocalStorage('DaysCollection')
         });
         
         misDias = new DaysCollection;
