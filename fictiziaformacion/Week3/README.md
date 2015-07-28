@@ -43,6 +43,7 @@ Week 3 Milestone
 ## Firebase
 
 * [Generic Firebase tutorial](http://thejackalofjavascript.com/getting-started-with-firebase/).
+* __Install firebase tools from terminal__: `sudo npm install -g firebase-tools` inside your app folder.
 
 ## Practice
 
