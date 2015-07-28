@@ -7,8 +7,17 @@ define(['backbone', 'underscore', 'firebase', 'backbonefire', 'text!templates/us
     // creamos la funcion publica que sera accesible desde fuera
     // con los parametros preconfigurados Backbone, _ y la plantilla pUsuariosHtml
     modulo.crearListaUsuarios = _crearListaUsuarios.bind(modulo, Backbone, _, pUsuarioHtml, pUsuariosHtml);
+    modulo.crearFichaUsuario = _crearFichaUsuario.bind(modulo, Backbone, _);
     
     return modulo;// devolvemos el modulo ya compuesto
+    
+    // funcion para crear una ficha de usuario
+    function _crearFichaUsuario (Backbone, _, pId) {// resto de parametros necesarios
+        // crear AppView de una ficha de usuario
+        // cargar un model para un usuario
+        // ...
+        console.log('cargar la ficha del usuario', pId);
+    }
     
     // funcion original con todos los parametros
     function _crearListaUsuarios (Backbone, _, pUsuarioHtml, pUsuariosHtml, pEtiqueta, pJSON) {
@@ -137,7 +146,7 @@ define(['backbone', 'underscore', 'firebase', 'backbonefire', 'text!templates/us
                     model: pModel
                 });
                 
-                // console.log('creando vista del usuario', pModel);
+                console.log('creando vista del usuario', pModel);
                 // añadimos al UL el HTML de la nuevaVista creada
                 this.$('ul').append(nuevaVista.render().el);
             },

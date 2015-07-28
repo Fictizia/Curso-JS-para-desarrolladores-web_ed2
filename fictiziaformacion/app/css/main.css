@@ -102,8 +102,7 @@ html.no-js #mostrarSiNoTieneJS {
     display: block;
 }
 
-#miCalendario,
-#misUsuarios {
+.app {
     box-sizing: border-box;
     border: 10px solid black;
     padding: 30px;

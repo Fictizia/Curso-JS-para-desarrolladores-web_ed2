@@ -19,11 +19,21 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+        <h1>Bienvenido!, elige una app:</h1>
+        
+        <ul>
+            <li><a href="./#usuarios">Mis Usuarios</a></li>
+            <li><a href="./#calendario">Mi Calendario</a></li>
+        </ul>
+
         <!-- aqui iria otra app de usuarios por ejemplo -->
-        <div id="misUsuarios"></div>
+        <div id="misUsuarios" class="app hidden"></div>
+        
+        <!-- aqui iria la app de ficha de un usuario -->
+        <div id="unUsuario" class="app hidden"></div>
         
         <!-- Add your site or application content here -->
-        <div id="miCalendario"></div>
+        <div id="miCalendario" class="app hidden"></div>
         
         
         <script data-main="js/index" src="bower_components/requirejs/require.js"></script>
